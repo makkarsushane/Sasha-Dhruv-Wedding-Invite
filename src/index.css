@@ -2410,6 +2410,14 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--page-ink);
   }
 
+  .event-sangeet .page-number,
+  .event-sangeet .detail-item span,
+  .event-sangeet .ceremony-timeline span,
+  .event-sangeet .venue-note span {
+    color: var(--page-ink);
+    opacity: 0.68;
+  }
+
   .event-wedding-day .event-folio h2 {
     font-size: 2.28rem;
   }
