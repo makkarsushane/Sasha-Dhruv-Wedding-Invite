@@ -2404,18 +2404,18 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--page-ink);
   }
 
-  .event-sangeet .event-description,
-  .event-sangeet .event-note,
-  .event-sangeet .detail-item strong {
+  .event-sangeet .event-folio .event-description,
+  .event-sangeet .event-folio .event-note,
+  .event-sangeet .event-folio .detail-item strong {
     color: var(--page-ink);
   }
 
-  .event-sangeet .page-number,
-  .event-sangeet .detail-item span,
-  .event-sangeet .ceremony-timeline span,
-  .event-sangeet .venue-note span {
-    color: var(--page-ink);
-    opacity: 0.68;
+  .event-sangeet .event-folio .page-number,
+  .event-sangeet .event-folio .detail-item span,
+  .event-sangeet .event-folio .ceremony-timeline span,
+  .event-sangeet .event-folio .venue-note span {
+    color: var(--page-muted);
+    opacity: 1;
   }
 
   .event-wedding-day .event-folio h2 {
