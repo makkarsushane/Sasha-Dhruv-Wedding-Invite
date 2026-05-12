@@ -554,13 +554,17 @@ function ClosingPage() {
   );
 }
 
+function isTouchExperience() {
+  return window.matchMedia('(pointer: coarse)').matches || navigator.maxTouchPoints > 0;
+}
+
 export default function InvitationExperience() {
   const root = useRef(null);
   const reducedMotion = useReducedMotion();
 
   useGSAP(
     () => {
-      if (reducedMotion) return;
+      if (reducedMotion || isTouchExperience()) return;
 
       const pages = gsap.utils.toArray('.invitation-page');
 
