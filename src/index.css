@@ -99,6 +99,7 @@ body {
   background-color: var(--color-ivory);
   color: var(--color-charcoal);
   overflow-x: hidden;
+  overscroll-behavior-y: contain;
   line-height: 1.7;
   font-weight: 300;
   letter-spacing: 0;
@@ -1737,9 +1738,16 @@ h1, h2, h3, h4, h5, h6 {
   margin-inline: auto;
 }
 
+.closing-love {
+  font-family: var(--font-heading);
+  font-size: 1.28rem;
+  line-height: 1.4;
+  color: var(--page-muted);
+}
+
 .closing-signature {
   display: grid;
-  gap: 5px;
+  gap: 8px;
   margin-top: 10px;
   padding-top: 22px;
   width: min(100%, 380px);
@@ -1748,12 +1756,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .closing-signature strong {
   font-family: var(--font-heading);
-  font-size: 1.35rem;
+  font-size: 1.45rem;
   font-weight: 400;
   color: var(--page-deep);
 }
 
 .closing-signature p {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  line-height: 1.3;
   color: var(--page-muted);
 }
 
@@ -2682,6 +2693,11 @@ h1, h2, h3, h4, h5, h6 {
 
   .closing-frame h2 {
     font-size: 2.26rem;
+  }
+
+  .closing-love {
+    font-size: 0.98rem;
+    line-height: 1.34;
   }
 
   .closing-signature {

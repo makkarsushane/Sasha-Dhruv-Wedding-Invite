@@ -5,7 +5,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import {
   couple,
-  families,
   invitationChapters,
   venue,
 } from '../../data/weddingData';
@@ -510,7 +509,7 @@ function EventPage({ chapter, index }) {
 
           {isWeddingDay && (
             <div className="venue-note" data-reveal>
-              <span>The Venue</span>
+              <span>Venue</span>
               <strong>{venue.name}</strong>
               <p>
                 {venue.hall}, {venue.address}, {venue.city} - {venue.pincode}
@@ -542,20 +541,13 @@ function ClosingPage() {
       <CeremonyVector variant="blush" />
 
       <div className="closing-frame" data-paper>
-        <div data-reveal>
-          <MonogramSeal />
-        </div>
-        <p className="invitation-kicker" data-reveal>
-          RSVP & Closing
+        <p className="closing-love" data-reveal>
+          With love and anticipation
         </p>
-        <h2 data-reveal>Awaiting your gracious presence</h2>
-        <p className="body-line" data-reveal>
-          Your blessings and presence will make these celebrations complete.
-        </p>
+        <h2 data-reveal>Sushane Makkar</h2>
         <div className="closing-signature" data-reveal>
-          <span>A cordial invitation from</span>
-          <strong>{families.invitedBy}</strong>
-          <p>{families.family}</p>
+          <strong>RSVP</strong>
+          <p>Makkar family</p>
         </div>
       </div>
     </section>
@@ -610,7 +602,7 @@ export default function InvitationExperience() {
               scrollTrigger: {
                 trigger: page,
                 start: 'top 76%',
-                toggleActions: 'play none none reverse',
+                toggleActions: 'play none none none',
               },
             },
           );
@@ -629,7 +621,7 @@ export default function InvitationExperience() {
               scrollTrigger: {
                 trigger: page,
                 start: 'top 76%',
-                toggleActions: 'play none none reverse',
+                toggleActions: 'play none none none',
               },
             },
           );
@@ -647,7 +639,7 @@ export default function InvitationExperience() {
               scrollTrigger: {
                 trigger: page,
                 start: 'top 72%',
-                toggleActions: 'play none none reverse',
+                toggleActions: 'play none none none',
               },
             },
           );
@@ -667,7 +659,7 @@ export default function InvitationExperience() {
               scrollTrigger: {
                 trigger: page,
                 start: 'top 66%',
-                toggleActions: 'play none none reverse',
+                toggleActions: 'play none none none',
               },
             },
           );
@@ -687,7 +679,7 @@ export default function InvitationExperience() {
               scrollTrigger: {
                 trigger: page,
                 start: 'top 68%',
-                toggleActions: 'play none none reverse',
+                toggleActions: 'play none none none',
               },
             },
           );
@@ -707,7 +699,7 @@ export default function InvitationExperience() {
               scrollTrigger: {
                 trigger: page,
                 start: 'top 66%',
-                toggleActions: 'play none none reverse',
+                toggleActions: 'play none none none',
               },
             },
           );
@@ -726,7 +718,7 @@ export default function InvitationExperience() {
               trigger: page,
               start: 'top 62%',
               end: 'top 28%',
-              toggleActions: 'play none none reverse',
+              toggleActions: 'play none none none',
             },
           },
         );
@@ -752,7 +744,7 @@ export default function InvitationExperience() {
               scrollTrigger: {
                 trigger: page,
                 start: 'top 68%',
-                toggleActions: 'play none none reverse',
+                toggleActions: 'play none none none',
               },
             },
           );
