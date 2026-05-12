@@ -541,6 +541,14 @@ function ClosingPage() {
       <CeremonyVector variant="blush" />
 
       <div className="closing-frame" data-paper>
+        <div data-reveal>
+          <MonogramSeal />
+        </div>
+        <p className="closing-shlok" data-reveal>
+          विघ्न हरण मंगल करण, गौरी पुत्र गणेश।
+          <br />
+          प्रथम निमंत्रण आपको, ब्रह्मा विष्णु महेश॥
+        </p>
         <p className="closing-love" data-reveal>
           With love and anticipation
         </p>

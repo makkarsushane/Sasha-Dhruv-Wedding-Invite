@@ -1739,6 +1739,14 @@ h1, h2, h3, h4, h5, h6 {
   margin-inline: auto;
 }
 
+.closing-shlok {
+  max-width: 520px;
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  line-height: 1.62;
+  color: var(--page-deep);
+}
+
 .closing-love {
   font-family: var(--font-heading);
   font-size: 1.28rem;
@@ -2694,6 +2702,12 @@ h1, h2, h3, h4, h5, h6 {
 
   .closing-frame h2 {
     font-size: 2.26rem;
+  }
+
+  .closing-shlok {
+    max-width: 280px;
+    font-size: 1rem;
+    line-height: 1.42;
   }
 
   .closing-love {
