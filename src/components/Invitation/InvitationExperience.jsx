@@ -638,162 +638,83 @@ export default function InvitationExperience() {
           },
         );
 
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: page,
+            start: 'top 75%',
+            toggleActions: 'play none none none',
+          }
+        });
+
         if (frame) {
-          gsap.fromTo(
+          tl.fromTo(
             frame,
             { autoAlpha: 0.18 },
-            {
-              autoAlpha: 1,
-              duration: 1.25,
-              ease: 'power2.out',
-              scrollTrigger: {
-                trigger: page,
-                start: 'top 76%',
-                toggleActions: 'play none none none',
-              },
-            },
+            { autoAlpha: 1, duration: 1.25, ease: 'power2.out' },
+            0
           );
         }
 
         if (canopy) {
-          gsap.fromTo(
+          tl.fromTo(
             canopy,
             { y: -58, scale: 1.08, transformOrigin: '50% 0%', autoAlpha: 0.1 },
-            {
-              y: 0,
-              scale: 1,
-              autoAlpha: 1,
-              duration: 1.55,
-              ease: 'power3.out',
-              scrollTrigger: {
-                trigger: page,
-                start: 'top 76%',
-                toggleActions: 'play none none none',
-              },
-            },
+            { y: 0, scale: 1, autoAlpha: 1, duration: 1.55, ease: 'power3.out' },
+            0.1
           );
         }
 
         if (canopyLines.length) {
-          gsap.fromTo(
+          tl.fromTo(
             canopyLines,
             { strokeDasharray: 1, strokeDashoffset: 1 },
-            {
-              strokeDashoffset: 0,
-              duration: 1.45,
-              stagger: 0.08,
-              ease: 'power2.out',
-              scrollTrigger: {
-                trigger: page,
-                start: 'top 72%',
-                toggleActions: 'play none none none',
-              },
-            },
+            { strokeDashoffset: 0, duration: 1.45, stagger: 0.08, ease: 'power2.out' },
+            0.2
           );
         }
 
         if (garlands.length) {
-          gsap.fromTo(
+          tl.fromTo(
             garlands,
             { y: -42, autoAlpha: 0, scaleY: 0.74, transformOrigin: 'top center' },
-            {
-              y: 0,
-              autoAlpha: 1,
-              scaleY: 1,
-              duration: 1.1,
-              stagger: 0.08,
-              ease: 'back.out(1.35)',
-              scrollTrigger: {
-                trigger: page,
-                start: 'top 66%',
-                toggleActions: 'play none none none',
-              },
-            },
+            { y: 0, autoAlpha: 1, scaleY: 1, duration: 1.1, stagger: 0.08, ease: 'back.out(1.35)' },
+            0.3
           );
         }
 
         if (grounds.length) {
-          gsap.fromTo(
+          tl.fromTo(
             grounds,
             { y: 44, autoAlpha: 0, scale: 0.9 },
-            {
-              y: 0,
-              autoAlpha: 1,
-              scale: 1,
-              duration: 1.2,
-              stagger: 0.08,
-              ease: 'power3.out',
-              scrollTrigger: {
-                trigger: page,
-                start: 'top 68%',
-                toggleActions: 'play none none none',
-              },
-            },
+            { y: 0, autoAlpha: 1, scale: 1, duration: 1.2, stagger: 0.08, ease: 'power3.out' },
+            0.4
           );
         }
 
         if (art) {
-          gsap.fromTo(
+          tl.fromTo(
             art,
             { y: 70, rotate: pageIndex % 2 ? -1.8 : 1.8, scale: 0.94, autoAlpha: 0 },
-            {
-              y: 0,
-              rotate: 0,
-              scale: 1,
-              autoAlpha: 1,
-              duration: 1.25,
-              ease: 'power3.out',
-              scrollTrigger: {
-                trigger: page,
-                start: 'top 66%',
-                toggleActions: 'play none none none',
-              },
-            },
+            { y: 0, rotate: 0, scale: 1, autoAlpha: 1, duration: 1.25, ease: 'power3.out' },
+            0.5
           );
         }
 
-        gsap.fromTo(
-          reveals,
-          { autoAlpha: 0, y: 44 },
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration: 1.05,
-            stagger: 0.075,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: page,
-              start: 'top 62%',
-              end: 'top 28%',
-              toggleActions: 'play none none none',
-            },
-          },
-        );
-
         if (paper) {
-          gsap.fromTo(
+          tl.fromTo(
             paper,
-            {
-              clipPath: 'inset(10% 7% 10% 7%)',
-              scale: 0.96,
-              y: 34,
-              rotateX: 7,
-              transformPerspective: 900,
-              transformOrigin: '50% 100%',
-            },
-            {
-              clipPath: 'inset(0% 0% 0% 0%)',
-              scale: 1,
-              y: 0,
-              rotateX: 0,
-              duration: 1.32,
-              ease: 'power3.out',
-              scrollTrigger: {
-                trigger: page,
-                start: 'top 68%',
-                toggleActions: 'play none none none',
-              },
-            },
+            { clipPath: 'inset(10% 7% 10% 7%)', scale: 0.96, y: 34, rotateX: 7, transformPerspective: 900, transformOrigin: '50% 100%' },
+            { clipPath: 'inset(0% 0% 0% 0%)', scale: 1, y: 0, rotateX: 0, duration: 1.32, ease: 'power3.out' },
+            0.6
+          );
+        }
+
+        if (reveals.length) {
+          tl.fromTo(
+            reveals,
+            { autoAlpha: 0, y: 44 },
+            { autoAlpha: 1, y: 0, duration: 1.05, stagger: 0.075, ease: 'power3.out' },
+            0.8
           );
         }
 

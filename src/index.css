@@ -436,34 +436,7 @@ h1, h2, h3, h4, h5, h6 {
   pointer-events: none;
 }
 
-.loader-wash,
-.wash-layer,
-.floating-line,
-.floating-petal,
-.hanging-garlands,
-.garland,
-.garland::before,
-.garland::after,
-.garland i,
-.floral-canopy,
-.floral-spray,
-.floral-ground,
-.floral-ground::before,
-.floral-ground::after,
-.floral-ground span,
-.star,
-.constellation,
-.event-art::before,
-.event-art .ceremony-vector,
-.seal-ring,
-.canopy-fill,
-.canopy-dot,
-.arch-dot,
-.vector-dot {
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
-}
+
 
 .invitation-frame {
   position: absolute;
