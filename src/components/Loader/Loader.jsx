@@ -44,7 +44,7 @@ export default function Loader({ onComplete }) {
         <motion.div
           className="opening-loader"
           onClick={handleSkip}
-          exit={{ opacity: 0, filter: 'blur(18px)' }}
+          exit={{ opacity: 0 }}
           transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
           aria-label="Opening invitation"
         >
@@ -135,11 +135,10 @@ export default function Loader({ onComplete }) {
                 src={monogramUrl}
                 alt="Sasha and Dhruv monogram"
                 className="loader-monogram"
-                initial={{ opacity: 0, scale: 1.08, filter: 'blur(14px)' }}
+                initial={{ opacity: 0, scale: 1.08 }}
                 animate={{
                   opacity: phase >= 2 ? 1 : 0,
                   scale: phase >= 2 ? 1 : 1.1,
-                  filter: phase >= 2 ? 'blur(0px)' : 'blur(14px)',
                 }}
                 transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
               />
@@ -158,11 +157,10 @@ export default function Loader({ onComplete }) {
 
             <motion.div
               className="loader-copy"
-              initial={{ opacity: 0, y: 22, filter: 'blur(10px)' }}
+              initial={{ opacity: 0, y: 22 }}
               animate={{
                 opacity: phase >= 3 ? 1 : 0,
                 y: phase >= 3 ? 0 : 20,
-                filter: phase >= 3 ? 'blur(0px)' : 'blur(10px)',
               }}
               transition={{ duration: 1.05, ease: [0.22, 1, 0.36, 1] }}
             >
