@@ -477,12 +477,10 @@ function EventPage({ chapter, index }) {
         </div>
 
         <article className="event-folio" data-paper>
-          {!isWeddingDay && (
-            <>
-              <LeafSprig className="folio-leaf-top" />
-              <LeafSprig className="folio-leaf-bottom" />
-            </>
-          )}
+          <>
+            <LeafSprig className="folio-leaf-top" />
+            <LeafSprig className="folio-leaf-bottom" />
+          </>
 
           <h2 data-reveal>{chapter.title}</h2>
           <p className="event-subtitle-card" data-reveal>
