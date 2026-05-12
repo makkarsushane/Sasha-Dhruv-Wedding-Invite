@@ -31,8 +31,8 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="icon" type="image/jpeg" href={`${basePath}/monogram.jpg`} />
         <link rel="preload" as="image" href={`${basePath}/monogram.jpg`} fetchPriority="high" />
-        <link rel="preload" as="image" href={`${basePath}/ornaments/floral-canopy.png`} fetchPriority="high" />
-        <link rel="preload" as="image" href={`${basePath}/ornaments/floral-corner.png`} />
+        <link rel="preload" as="image" href={`${basePath}/ornaments/floral-canopy.webp`} fetchPriority="high" />
+        <link rel="preload" as="image" href={`${basePath}/ornaments/floral-corner.webp`} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link

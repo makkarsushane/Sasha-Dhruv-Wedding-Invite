@@ -447,7 +447,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .floral-border {
-  --floral-filter: saturate(1.12) brightness(1.04);
   --floral-canopy-opacity: 0.94;
   --floral-spray-opacity: 0.54;
   --floral-spray-peak-opacity: 0.66;
@@ -470,7 +469,6 @@ h1, h2, h3, h4, h5, h6 {
   opacity: var(--floral-canopy-opacity);
   transform: translate3d(-50%, 0, 0);
   transform-origin: top center;
-  filter: var(--floral-filter);
   contain: layout paint;
 }
 
@@ -484,7 +482,6 @@ h1, h2, h3, h4, h5, h6 {
   background-size: contain;
   opacity: var(--floral-spray-opacity);
   transform-origin: center;
-  filter: var(--floral-filter);
   animation: floral-spray-breathe 10.5s ease-in-out infinite alternate;
   contain: layout paint;
 }
@@ -504,14 +501,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .event-sangeet .floral-border {
-  --floral-filter: hue-rotate(12deg) saturate(1.08) brightness(1.05);
   --floral-canopy-opacity: 0.88;
   --floral-spray-opacity: 0.46;
   --floral-spray-peak-opacity: 0.58;
 }
 
 .event-haldi-mehndi .floral-border {
-  --floral-filter: hue-rotate(32deg) saturate(1.12) brightness(1.08);
   --floral-canopy-opacity: 0.9;
   --floral-spray-opacity: 0.5;
   --floral-spray-peak-opacity: 0.62;
@@ -519,21 +514,18 @@ h1, h2, h3, h4, h5, h6 {
 
 .event-choora .floral-border,
 .closing-page .floral-border {
-  --floral-filter: hue-rotate(-5deg) saturate(1.08) brightness(1.04);
   --floral-canopy-opacity: 0.9;
   --floral-spray-opacity: 0.48;
   --floral-spray-peak-opacity: 0.6;
 }
 
 .event-wedding-day .floral-border {
-  --floral-filter: hue-rotate(-16deg) saturate(1.18) brightness(1);
   --floral-canopy-opacity: 0.92;
   --floral-spray-opacity: 0.5;
   --floral-spray-peak-opacity: 0.62;
 }
 
 .family-page .floral-border {
-  --floral-filter: hue-rotate(34deg) saturate(0.98) brightness(1.08);
   --floral-canopy-opacity: 0.84;
   --floral-spray-opacity: 0.42;
   --floral-spray-peak-opacity: 0.52;
@@ -2881,9 +2873,7 @@ h1, h2, h3, h4, h5, h6 {
     min-height: 100svh;
   }
 
-  /* Only reduce GPU-heavy hints — do NOT kill animations or the page
-     will flash/refresh when the browser re-evaluates the media query
-     during pinch-zoom. */
+  /* Keep touch-device motion intact while avoiding expensive compositor work. */
   .loader-wash,
   .wash-layer,
   .floating-line,
@@ -2905,22 +2895,18 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-backdrop-filter: none;
   }
 
-  /* Android Chrome Performance Fixes */
+  .loader-wash,
+  .wash-layer,
+  .event-sangeet .palace-canopy,
+  .mughal-arch,
+  .event-art .ceremony-vector {
+    filter: none !important;
+  }
+
+  /* Touch browser performance fixes */
   .loader-grain,
   .grain-layer {
     background-image: none !important;
-  }
-
-  .loader-wash,
-  .wash-layer {
-    animation: none !important;
-  }
-
-  /* Prevent GPU crash from massive floral images */
-  .floral-canopy,
-  .floral-spray {
-    filter: none !important;
-    animation: none !important;
   }
 }
 

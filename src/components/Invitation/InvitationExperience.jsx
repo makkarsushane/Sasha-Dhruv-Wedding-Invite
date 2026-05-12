@@ -20,8 +20,8 @@ ScrollTrigger.config({
 });
 
 const monogramUrl = assetPath('/monogram.jpg');
-const floralCanopyUrl = assetPath('/ornaments/floral-canopy.png');
-const floralCornerUrl = assetPath('/ornaments/floral-corner.png');
+const floralCanopyUrl = assetPath('/ornaments/floral-canopy.webp');
+const floralCornerUrl = assetPath('/ornaments/floral-corner.webp');
 
 const frameOrnamentStyle = {
   '--floral-canopy-image': `url("${floralCanopyUrl}")`,
