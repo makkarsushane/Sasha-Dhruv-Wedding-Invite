@@ -4,7 +4,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import {
-  blessings,
   couple,
   families,
   invitationChapters,
@@ -12,6 +11,10 @@ import {
 } from '../../data/weddingData';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
+ScrollTrigger.config({
+  ignoreMobileResize: true,
+  autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load',
+});
 
 const monogramUrl = `${import.meta.env.BASE_URL}monogram.jpg`;
 
@@ -26,13 +29,13 @@ const coverPalette = {
 };
 
 const familyPalette = {
-  bg: '#edf0e4',
-  paper: '#fffaf1',
-  ink: '#283127',
-  muted: '#67715d',
-  accent: '#9aa77a',
-  deep: '#46503e',
-  wash: '#c8d3ad',
+  bg: '#eef7e7',
+  paper: '#fbfff6',
+  ink: '#263427',
+  muted: '#61735c',
+  accent: '#a9c989',
+  deep: '#48623e',
+  wash: '#d8ecc5',
 };
 
 const closingPalette = {
@@ -366,47 +369,47 @@ function FamilyPage() {
       <InvitationFrame variant="family" />
       <MughalArch className="family-arch" />
 
-      <div className="page-grid family-grid">
-        <div className="blessing-panel" data-paper>
-          <div data-reveal>
-            <MonogramSeal quiet />
-          </div>
-          <p className="sanskrit-line" data-reveal>
-            {blessings.sanskrit}
-          </p>
-          <p className="invitation-kicker" data-reveal>
-            {blessings.english}
-          </p>
-          <div className="grandparent-list" data-reveal>
-            {families.grandparents.map((grandparent) => (
-              <p key={grandparent.names}>{grandparent.names}</p>
-            ))}
-          </div>
+      <div className="family-invitation" data-paper>
+        <div data-reveal>
+          <MonogramSeal quiet />
         </div>
-
-        <div className="family-copy">
-          <p className="page-number" data-reveal>
-            Family
-          </p>
-          <h2 data-reveal>With love, blessings and joy</h2>
-          <p className="body-line" data-reveal>
-            The families request the honour of your gracious presence as Sasha and Dhruv
-            begin this new chapter together.
-          </p>
-
-          <div className="parent-pair" data-reveal>
-            <div>
-              <span>Bride&apos;s Parents</span>
-              <strong>{families.brideParents.mother}</strong>
-              <strong>{families.brideParents.father}</strong>
-            </div>
-            <div>
-              <span>Groom&apos;s Parents</span>
-              <strong>{families.groomParents.mother}</strong>
-              <strong>{families.groomParents.father}</strong>
-            </div>
-          </div>
+        <p className="family-sanskrit" data-reveal>
+          || वक्रतुण्ड महाकाय सूर्यकोटि समप्रभः<br />
+          निर्विघ्न कुरु मे देव सर्वकार्येषु सर्वदा:||
+        </p>
+        <p className="family-small" data-reveal>
+          With the blessings of grand parents
+        </p>
+        <div className="family-blessing-names" data-reveal>
+          <p>Smt. Mohini Devi &amp; Late Shri Girdhari Lal Makkar</p>
+          <span>and</span>
+          <p>Smt. Suraj Kumari &amp; Late Shri Kanwar Bhan</p>
         </div>
+        <p className="family-parents" data-reveal>
+          Mrs. Sonia Makkar &amp; Mr. Tushar Makkar
+        </p>
+        <p className="family-request" data-reveal>
+          request the honour of your gracious presence at the
+        </p>
+        <h2 data-reveal>Wedding Ceremony</h2>
+        <p className="family-small" data-reveal>
+          of their daughter
+        </p>
+        <p className="family-couple-name" data-reveal>
+          Sasha
+        </p>
+        <p className="family-with" data-reveal>
+          with
+        </p>
+        <p className="family-couple-name" data-reveal>
+          Dhruv
+        </p>
+        <p className="family-groom-line" data-reveal>
+          (s/o Mrs. Vandna Kundu &amp; Mr. Sanjay Kundu)
+        </p>
+        <p className="family-date-line" data-reveal>
+          On Monday, 29th June 2026
+        </p>
       </div>
     </section>
   );
@@ -481,9 +484,6 @@ function EventPage({ chapter, index }) {
             </>
           )}
 
-          <p className="page-number" data-reveal>
-            {chapter.day}
-          </p>
           <h2 data-reveal>{chapter.title}</h2>
           <p className="event-subtitle-card" data-reveal>
             {chapter.subtitle}
@@ -495,7 +495,7 @@ function EventPage({ chapter, index }) {
           <div className="detail-grid" data-reveal>
             <Detail label="Date" value={chapter.date} />
             <Detail label="Time" value={chapter.time} />
-            <Detail label="Venue" value={chapter.venue} />
+            {!isWeddingDay && <Detail label="Venue" value={chapter.venue} />}
             <Detail label="Attire" value={chapter.attire} />
           </div>
 
@@ -588,10 +588,9 @@ export default function InvitationExperience() {
 
         gsap.fromTo(
           page,
-          { scale: 0.985, filter: 'saturate(0.9) brightness(0.96)' },
+          { scale: 0.985 },
           {
             scale: 1,
-            filter: 'saturate(1.06) brightness(1)',
             ease: 'power1.out',
             scrollTrigger: {
               trigger: page,
@@ -718,11 +717,10 @@ export default function InvitationExperience() {
 
         gsap.fromTo(
           reveals,
-          { autoAlpha: 0, y: 56, filter: 'blur(14px)' },
+          { autoAlpha: 0, y: 44 },
           {
             autoAlpha: 1,
             y: 0,
-            filter: 'blur(0px)',
             duration: 1.05,
             stagger: 0.075,
             ease: 'power3.out',

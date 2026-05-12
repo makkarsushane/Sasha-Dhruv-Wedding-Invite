@@ -86,7 +86,7 @@
 
 html {
   scroll-behavior: auto;
-  scroll-snap-type: y proximity;
+  overscroll-behavior-y: contain;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -391,8 +391,6 @@ h1, h2, h3, h4, h5, h6 {
     radial-gradient(circle at 84% 78%, color-mix(in srgb, var(--page-wash), transparent 54%) 0, transparent 34%),
     linear-gradient(130deg, color-mix(in srgb, var(--page-bg), #ffffff 18%), color-mix(in srgb, var(--page-wash), var(--page-bg) 72%) 48%, var(--page-bg)),
     var(--page-bg);
-  scroll-snap-align: start;
-  scroll-snap-stop: normal;
   overflow: hidden;
   isolation: isolate;
 }
@@ -433,6 +431,33 @@ h1, h2, h3, h4, h5, h6 {
 .star-field,
 .invitation-frame {
   pointer-events: none;
+}
+
+.loader-wash,
+.wash-layer,
+.floating-line,
+.floating-petal,
+.hanging-garlands,
+.garland,
+.garland::before,
+.garland::after,
+.garland i,
+.floral-ground,
+.floral-ground::before,
+.floral-ground::after,
+.floral-ground span,
+.star,
+.constellation,
+.event-art::before,
+.event-art .ceremony-vector,
+.seal-ring,
+.canopy-fill,
+.canopy-dot,
+.arch-dot,
+.vector-dot {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform, opacity;
 }
 
 .invitation-frame {
@@ -706,17 +731,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .frame-night,
 .event-sangeet .invitation-frame {
-  color: #d9c894;
+  color: #c4a65a;
 }
 
 .event-sangeet .palace-canopy {
-  opacity: 0.5;
-  filter: drop-shadow(0 0 28px rgba(214, 189, 128, 0.12));
+  opacity: 0.44;
+  filter: drop-shadow(0 18px 28px rgba(65, 107, 133, 0.08));
 }
 
 .event-sangeet .side-miniature-border,
 .event-sangeet .top-miniature-border {
-  opacity: 0.32;
+  opacity: 0.46;
 }
 
 .mughal-arch {
@@ -832,9 +857,9 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 0;
   overflow: hidden;
   background:
-    radial-gradient(circle at 18% 20%, rgba(255, 243, 205, 0.18), transparent 28%),
-    radial-gradient(circle at 84% 18%, rgba(180, 164, 199, 0.2), transparent 26%),
-    radial-gradient(circle at 52% 84%, rgba(214, 189, 128, 0.12), transparent 32%);
+    radial-gradient(circle at 18% 20%, color-mix(in srgb, var(--page-paper), transparent 28%), transparent 28%),
+    radial-gradient(circle at 84% 18%, color-mix(in srgb, var(--page-accent), transparent 78%), transparent 26%),
+    radial-gradient(circle at 52% 84%, color-mix(in srgb, var(--page-wash), transparent 36%), transparent 32%);
 }
 
 .star-field::before,
@@ -844,8 +869,8 @@ h1, h2, h3, h4, h5, h6 {
   inset: 0;
   opacity: 0.45;
   background-image:
-    radial-gradient(circle, rgba(255, 247, 214, 0.72) 0 1px, transparent 1.5px),
-    radial-gradient(circle, rgba(182, 164, 199, 0.58) 0 1px, transparent 1.5px);
+    radial-gradient(circle, color-mix(in srgb, var(--page-accent), transparent 24%) 0 1px, transparent 1.5px),
+    radial-gradient(circle, color-mix(in srgb, var(--page-deep), transparent 52%) 0 1px, transparent 1.5px);
   background-size: 74px 74px, 121px 121px;
   background-position: 0 0, 28px 36px;
   mask-image: radial-gradient(circle at center, black 0 72%, transparent 100%);
@@ -861,8 +886,8 @@ h1, h2, h3, h4, h5, h6 {
 .star {
   position: absolute;
   border-radius: 50%;
-  background: #fff3bf;
-  box-shadow: 0 0 14px rgba(255, 238, 179, 0.72);
+  background: color-mix(in srgb, var(--page-accent), #ffffff 34%);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--page-accent), transparent 62%);
   transform-origin: center;
   animation: star-twinkle 2.8s ease-in-out infinite;
 }
@@ -880,8 +905,8 @@ h1, h2, h3, h4, h5, h6 {
   right: -2%;
   top: 6%;
   width: min(72vw, 540px);
-  color: rgba(255, 238, 189, 0.58);
-  opacity: 0.45;
+  color: color-mix(in srgb, var(--page-accent), transparent 22%);
+  opacity: 0.34;
   animation: constellation-breathe 9s ease-in-out infinite alternate;
 }
 
@@ -1114,6 +1139,112 @@ h1, h2, h3, h4, h5, h6 {
   min-height: min(740px, calc(100svh - 110px));
 }
 
+.family-invitation {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  width: min(100%, 760px);
+  padding: 42px 38px;
+  text-align: center;
+  border: 1px solid color-mix(in srgb, var(--page-deep), transparent 82%);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 20% 10%, color-mix(in srgb, var(--page-wash), transparent 58%), transparent 34%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.28)),
+    color-mix(in srgb, var(--page-paper), transparent 3%);
+  box-shadow: 0 28px 88px rgba(56, 88, 48, 0.12);
+  backdrop-filter: blur(14px);
+  overflow: hidden;
+}
+
+.family-invitation::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid color-mix(in srgb, var(--page-deep), transparent 88%);
+  pointer-events: none;
+}
+
+.family-invitation > * {
+  position: relative;
+  z-index: 1;
+}
+
+.family-sanskrit {
+  font-family: var(--font-heading);
+  font-size: 1.28rem;
+  line-height: 1.34;
+  color: var(--page-deep);
+}
+
+.family-small,
+.family-request,
+.family-with,
+.family-groom-line,
+.family-date-line {
+  font-family: var(--font-heading);
+  color: var(--page-ink);
+}
+
+.family-small,
+.family-request {
+  font-size: 1.18rem;
+  line-height: 1.35;
+}
+
+.family-blessing-names {
+  display: grid;
+  gap: 3px;
+  font-family: var(--font-heading);
+  font-size: 1.32rem;
+  line-height: 1.24;
+  color: var(--page-ink);
+}
+
+.family-blessing-names span {
+  font-size: 1.08rem;
+}
+
+.family-parents {
+  margin-top: 2px;
+  font-family: var(--font-heading);
+  font-size: 1.58rem;
+  line-height: 1.18;
+  color: var(--page-deep);
+}
+
+.family-invitation h2 {
+  margin-top: -2px;
+  font-size: 2.35rem;
+  line-height: 0.98;
+  color: var(--page-deep);
+}
+
+.family-couple-name {
+  font-family: var(--font-heading);
+  font-size: 3.1rem;
+  line-height: 0.88;
+  color: var(--page-ink);
+}
+
+.family-with {
+  font-size: 1.26rem;
+  line-height: 1;
+}
+
+.family-groom-line,
+.family-date-line {
+  font-size: 1.18rem;
+  line-height: 1.3;
+}
+
+.family-date-line {
+  margin-top: 8px;
+  color: var(--page-deep);
+}
+
 .blessing-panel {
   display: grid;
   gap: 18px;
@@ -1222,8 +1353,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .event-sangeet .chapter-marquee {
-  color: var(--page-paper);
-  opacity: 0.16;
+  color: var(--page-deep);
+  opacity: 0.1;
 }
 
 .event-art {
@@ -1306,13 +1437,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .event-sangeet .event-art .ceremony-vector {
-  color: #d9c894;
-  --vector-low: 0.2;
-  --vector-high: 0.32;
-  --vector-filter-low: drop-shadow(0 0 18px rgba(214, 189, 128, 0.12));
-  --vector-filter-high: drop-shadow(0 0 30px rgba(214, 189, 128, 0.24));
-  opacity: 0.22;
-  filter: drop-shadow(0 0 24px rgba(214, 189, 128, 0.18));
+  color: #c4a65a;
+  --vector-low: 0.16;
+  --vector-high: 0.26;
+  --vector-filter-low: none;
+  --vector-filter-high: none;
+  opacity: 0.2;
+  filter: none;
 }
 
 .event-haldi-mehndi {
@@ -1324,9 +1455,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .event-sangeet {
   background:
-    radial-gradient(circle at 20% 18%, rgba(182, 164, 199, 0.26) 0, transparent 32%),
-    radial-gradient(circle at 78% 72%, rgba(214, 189, 128, 0.14) 0, transparent 36%),
-    linear-gradient(145deg, #111827 0%, #222a41 48%, #443151 100%);
+    radial-gradient(circle at 20% 18%, rgba(255, 250, 230, 0.86) 0, transparent 31%),
+    radial-gradient(circle at 78% 72%, rgba(196, 166, 90, 0.22) 0, transparent 35%),
+    radial-gradient(circle at 52% 16%, rgba(207, 231, 244, 0.74) 0, transparent 30%),
+    linear-gradient(145deg, #f7fbff 0%, #eaf4fb 48%, #d4e9f4 100%);
 }
 
 .event-choora {
@@ -1640,38 +1772,32 @@ h1, h2, h3, h4, h5, h6 {
 
 @keyframes star-twinkle {
   0%, 100% {
-    transform: scale(0.55);
-    opacity: 0.18;
-    box-shadow: 0 0 4px rgba(255, 238, 179, 0.2);
+    transform: translateZ(0) scale(0.7);
+    opacity: 0.22;
   }
   50% {
-    transform: scale(2.25);
-    opacity: 1;
-    box-shadow: 0 0 20px rgba(255, 238, 179, 0.95), 0 0 42px rgba(214, 189, 128, 0.38);
+    transform: translateZ(0) scale(1.35);
+    opacity: 0.72;
   }
 }
 
 @keyframes canopy-lustre {
   0%, 100% {
     opacity: 0.16;
-    filter: saturate(0.92);
   }
   50% {
     opacity: 0.26;
-    filter: saturate(1.12);
   }
 }
 
 @keyframes ornament-glow {
   0%, 100% {
-    transform: scale(0.82);
+    transform: translateZ(0) scale(0.86);
     opacity: 0.24;
-    filter: drop-shadow(0 0 0 transparent);
   }
   50% {
-    transform: scale(1.55);
-    opacity: 1;
-    filter: drop-shadow(0 0 13px color-mix(in srgb, var(--page-accent), transparent 36%));
+    transform: translateZ(0) scale(1.24);
+    opacity: 0.74;
   }
 }
 
@@ -1686,25 +1812,23 @@ h1, h2, h3, h4, h5, h6 {
 
 @keyframes small-petal-breathe {
   0%, 100% {
-    transform: translateX(-50%) translateY(0) rotate(var(--petal-rotate)) scale(0.96);
+    transform: translate3d(-50%, 0, 0) rotate(var(--petal-rotate)) scale(0.96);
     opacity: 0.68;
-    filter: saturate(0.92);
   }
   50% {
-    transform: translateX(-50%) translateY(8px) rotate(calc(var(--petal-rotate) + 8deg)) scale(1.14);
-    opacity: 1;
-    filter: saturate(1.18) drop-shadow(0 5px 12px color-mix(in srgb, var(--page-accent), transparent 76%));
+    transform: translate3d(-50%, 6px, 0) rotate(calc(var(--petal-rotate) + 6deg)) scale(1.08);
+    opacity: 0.86;
   }
 }
 
 @keyframes hanging-thread-drop {
   0%, 100% {
-    top: 0;
-    filter: saturate(0.9);
+    transform: translate3d(0, 0, 0) rotate(var(--garland-tilt));
+    opacity: 0.7;
   }
   48% {
-    top: 15px;
-    filter: saturate(1.12) drop-shadow(0 10px 18px color-mix(in srgb, var(--page-accent), transparent 78%));
+    transform: translate3d(0, 10px, 0) rotate(var(--garland-tilt));
+    opacity: 0.88;
   }
 }
 
@@ -1729,24 +1853,20 @@ h1, h2, h3, h4, h5, h6 {
 @keyframes miniature-border-glow {
   0%, 100% {
     opacity: 0.46;
-    filter: drop-shadow(0 0 0 transparent);
   }
   50% {
-    opacity: 0.86;
-    filter: drop-shadow(0 0 10px color-mix(in srgb, var(--page-accent), transparent 56%));
+    opacity: 0.68;
   }
 }
 
 @keyframes ornamental-dot-twinkle {
   0%, 100% {
-    transform: scale(0.74);
+    transform: translateZ(0) scale(0.82);
     opacity: 0.26;
-    filter: drop-shadow(0 0 0 transparent);
   }
   45%, 58% {
-    transform: scale(1.45);
-    opacity: 1;
-    filter: drop-shadow(0 0 9px color-mix(in srgb, var(--page-accent), transparent 42%));
+    transform: translateZ(0) scale(1.18);
+    opacity: 0.72;
   }
 }
 
@@ -1764,44 +1884,36 @@ h1, h2, h3, h4, h5, h6 {
 @keyframes leafy-card-breathe {
   0%, 100% {
     opacity: 0.2;
-    filter: saturate(0.86);
   }
   50% {
-    opacity: 0.38;
-    filter: saturate(1.12) drop-shadow(0 10px 22px color-mix(in srgb, var(--page-accent), transparent 78%));
+    opacity: 0.32;
   }
 }
 
 @keyframes floral-ink-breathe {
   0%, 100% {
-    opacity: 0.72;
-    filter: saturate(0.88) blur(0px);
+    opacity: 0.66;
   }
   50% {
-    opacity: 1;
-    filter: saturate(1.12) blur(0.15px);
+    opacity: 0.86;
   }
 }
 
 @keyframes ornament-panel-breathe {
   0%, 100% {
     opacity: 0.56;
-    filter: saturate(0.92);
   }
   50% {
-    opacity: 0.8;
-    filter: saturate(1.12);
+    opacity: 0.7;
   }
 }
 
 @keyframes vector-quiet-breathe {
   0%, 100% {
     opacity: var(--vector-low, 0.14);
-    filter: var(--vector-filter-low, drop-shadow(0 18px 32px rgba(42, 26, 17, 0.06)));
   }
   50% {
     opacity: var(--vector-high, 0.24);
-    filter: var(--vector-filter-high, drop-shadow(0 26px 42px rgba(42, 26, 17, 0.12)));
   }
 }
 
@@ -1816,12 +1928,10 @@ h1, h2, h3, h4, h5, h6 {
 
 @keyframes constellation-breathe {
   0%, 100% {
-    opacity: 0.34;
-    filter: drop-shadow(0 0 0 rgba(255, 238, 189, 0));
+    opacity: 0.26;
   }
   50% {
-    opacity: 0.56;
-    filter: drop-shadow(0 0 14px rgba(255, 238, 189, 0.16));
+    opacity: 0.4;
   }
 }
 
@@ -2235,6 +2345,72 @@ h1, h2, h3, h4, h5, h6 {
     padding-top: 26px;
   }
 
+  .family-invitation {
+    width: min(100%, 350px);
+    gap: 6px;
+    padding: 24px 18px 18px;
+    box-shadow: 0 18px 52px rgba(56, 88, 48, 0.08);
+    backdrop-filter: blur(8px);
+  }
+
+  .family-invitation::before {
+    inset: 8px;
+  }
+
+  .family-invitation .monogram-seal {
+    width: 64px;
+  }
+
+  .family-sanskrit {
+    font-size: 0.9rem;
+    line-height: 1.25;
+  }
+
+  .family-small,
+  .family-request {
+    font-size: 0.84rem;
+    line-height: 1.2;
+  }
+
+  .family-blessing-names {
+    gap: 1px;
+    font-size: 0.86rem;
+    line-height: 1.14;
+  }
+
+  .family-blessing-names span {
+    font-size: 0.78rem;
+  }
+
+  .family-parents {
+    font-size: 1rem;
+    line-height: 1.1;
+  }
+
+  .family-invitation h2 {
+    font-size: 1.56rem;
+    line-height: 0.95;
+  }
+
+  .family-couple-name {
+    font-size: 2.18rem;
+    line-height: 0.8;
+  }
+
+  .family-with {
+    font-size: 0.9rem;
+  }
+
+  .family-groom-line,
+  .family-date-line {
+    font-size: 0.86rem;
+    line-height: 1.18;
+  }
+
+  .family-date-line {
+    margin-top: 3px;
+  }
+
   .blessing-panel {
     gap: 8px;
     padding: 28px 18px 18px;
@@ -2337,10 +2513,10 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .event-sangeet .event-art .ceremony-vector {
-    color: #e8d28c;
-    --vector-low: 0.3;
-    --vector-high: 0.48;
-    opacity: 0.42;
+    color: #c4a65a;
+    --vector-low: 0.24;
+    --vector-high: 0.36;
+    opacity: 0.32;
   }
 
   .event-folio {
@@ -2372,8 +2548,8 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .event-sangeet .folio-leaf {
-    opacity: 0.34;
-    color: #d9c894;
+    opacity: 0.3;
+    color: #c4a65a;
   }
 
   .event-subtitle-card {
@@ -2389,33 +2565,34 @@ h1, h2, h3, h4, h5, h6 {
 
   .event-sangeet .event-folio {
     background:
-      linear-gradient(145deg, rgba(21, 25, 39, 0.64), rgba(21, 25, 39, 0.32)),
-      color-mix(in srgb, var(--page-deep), transparent 6%);
-    border-color: rgba(232, 210, 140, 0.18);
+      radial-gradient(circle at 18% 8%, rgba(196, 166, 90, 0.16), transparent 34%),
+      linear-gradient(145deg, rgba(255, 255, 255, 0.66), rgba(255, 255, 255, 0.22)),
+      color-mix(in srgb, var(--page-paper), transparent 6%);
+    border-color: rgba(65, 107, 133, 0.14);
   }
 
   .event-sangeet .event-subtitle-card {
-    color: #efe2b8;
-    opacity: 0.82;
+    color: var(--page-deep);
+    opacity: 0.78;
   }
 
   .event-sangeet .event-folio h2 {
     font-size: 1.78rem;
-    color: var(--page-ink);
+    color: var(--page-deep);
   }
 
   .event-sangeet .event-folio .event-description,
   .event-sangeet .event-folio .event-note,
   .event-sangeet .event-folio .detail-item strong {
-    color: var(--page-ink);
+    color: var(--page-deep);
   }
 
   .event-sangeet .event-folio .page-number,
   .event-sangeet .event-folio .detail-item span,
   .event-sangeet .event-folio .ceremony-timeline span,
   .event-sangeet .event-folio .venue-note span {
-    color: var(--page-muted);
-    opacity: 1;
+    color: var(--page-deep);
+    opacity: 0.68;
   }
 
   .event-wedding-day .event-folio h2 {
@@ -2523,10 +2700,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-snap-type: y proximity;
-  }
-
   *,
   *::before,
   *::after {

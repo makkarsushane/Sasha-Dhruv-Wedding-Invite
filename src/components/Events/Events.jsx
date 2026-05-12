@@ -20,16 +20,8 @@ export default function Events() {
             {/* Day header */}
             <div className="text-center mb-12 md:mb-16">
               <AnimatedText
-                as="p"
-                className="text-[10px] md:text-xs tracking-[0.5em] uppercase text-stone-light font-body font-light"
-                delay={0.1}
-              >
-                {day.day}
-              </AnimatedText>
-
-              <AnimatedText
                 as="h2"
-                className="font-heading text-3xl md:text-4xl lg:text-5xl text-charcoal font-light mt-4"
+                className="font-heading text-3xl md:text-4xl lg:text-5xl text-charcoal font-light"
                 delay={0.2}
               >
                 {day.date}
