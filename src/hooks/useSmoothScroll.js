@@ -1,6 +1,60 @@
 import { useEffect, useRef } from 'react';
-import Lenis from 'lenis';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+function getTouchDistance(touches) {
+  const firstTouch = touches[0];
+  const secondTouch = touches[1];
+  const xDistance = firstTouch.clientX - secondTouch.clientX;
+  const yDistance = firstTouch.clientY - secondTouch.clientY;
+
+  return Math.hypot(xDistance, yDistance);
+}
+
+function getVisualScale() {
+  return window.visualViewport?.scale ?? 1;
+}
+
+function preventPinchOutRefresh() {
+  let lastTouchDistance = null;
+
+  function handleTouchMove(event) {
+    if (event.touches.length < 2) {
+      lastTouchDistance = null;
+      return;
+    }
+
+    const currentTouchDistance = getTouchDistance(event.touches);
+    const isPinchingClosed =
+      lastTouchDistance !== null && currentTouchDistance < lastTouchDistance;
+
+    lastTouchDistance = currentTouchDistance;
+
+    if (getVisualScale() <= 1.02 && isPinchingClosed) {
+      event.preventDefault();
+    }
+  }
+
+  function handleTouchEnd() {
+    lastTouchDistance = null;
+  }
+
+  function handleGestureChange(event) {
+    if (getVisualScale() <= 1.02 && event.scale < 1) {
+      event.preventDefault();
+    }
+  }
+
+  document.addEventListener('touchmove', handleTouchMove, { passive: false });
+  document.addEventListener('touchend', handleTouchEnd, { passive: true });
+  document.addEventListener('touchcancel', handleTouchEnd, { passive: true });
+  window.addEventListener('gesturechange', handleGestureChange, { passive: false });
+
+  return () => {
+    document.removeEventListener('touchmove', handleTouchMove);
+    document.removeEventListener('touchend', handleTouchEnd);
+    document.removeEventListener('touchcancel', handleTouchEnd);
+    window.removeEventListener('gesturechange', handleGestureChange);
+  };
+}
 
 export function useSmoothScroll() {
   const lenisRef = useRef(null);
@@ -9,57 +63,17 @@ export function useSmoothScroll() {
     const isTouchDevice =
       window.matchMedia('(pointer: coarse)').matches || navigator.maxTouchPoints > 0;
 
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || isTouchDevice) {
-      return undefined;
+    function handleBeforeUnload(event) {
+      event.preventDefault();
+      event.returnValue = '';
     }
 
-    const lenis = new Lenis({
-      duration: 0.82,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 0.86,
-      autoResize: false,
-    });
-
-    lenisRef.current = lenis;
-    let frameId;
-    let resizeFrameId;
-    let lastWindowWidth = window.innerWidth;
-
-    lenis.on('scroll', ScrollTrigger.update);
-
-    function handleResize() {
-      const widthChanged = window.innerWidth !== lastWindowWidth;
-
-      if (!widthChanged) return;
-
-      lastWindowWidth = window.innerWidth;
-      cancelAnimationFrame(resizeFrameId);
-      resizeFrameId = requestAnimationFrame(() => {
-        lenis.resize();
-        ScrollTrigger.update();
-      });
-    }
-
-    window.addEventListener('resize', handleResize, { passive: true });
-    window.visualViewport?.addEventListener('resize', handleResize, { passive: true });
-
-    function raf(time) {
-      lenis.raf(time);
-      frameId = requestAnimationFrame(raf);
-    }
-
-    frameId = requestAnimationFrame(raf);
+    const cleanupPinchGuard = isTouchDevice ? preventPinchOutRefresh() : undefined;
+    window.addEventListener('beforeunload', handleBeforeUnload);
 
     return () => {
-      lenis.off('scroll', ScrollTrigger.update);
-      window.removeEventListener('resize', handleResize);
-      window.visualViewport?.removeEventListener('resize', handleResize);
-      cancelAnimationFrame(frameId);
-      cancelAnimationFrame(resizeFrameId);
-      lenis.destroy();
+      cleanupPinchGuard?.();
+      window.removeEventListener('beforeunload', handleBeforeUnload);
     };
   }, []);
 
