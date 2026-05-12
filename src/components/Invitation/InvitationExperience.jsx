@@ -12,6 +12,7 @@ import {
 } from '../../data/weddingData';
 import { useSmoothScroll } from '../../hooks/useSmoothScroll';
 import { assetPath } from '../../lib/assetPath';
+import { isTouchScrollDevice } from '../../lib/mobileMotion';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 ScrollTrigger.config({
@@ -613,6 +614,7 @@ export default function InvitationExperience() {
       if (reducedMotion) return;
 
       const pages = gsap.utils.toArray('.invitation-page');
+      const useNativeTouchScroll = isTouchScrollDevice();
 
       pages.forEach((page, pageIndex) => {
         const reveals = page.querySelectorAll('[data-reveal]');
@@ -721,7 +723,7 @@ export default function InvitationExperience() {
           );
         }
 
-        if (marquee) {
+        if (marquee && !useNativeTouchScroll) {
           gsap.fromTo(
             marquee,
             { xPercent: pageIndex % 2 ? -14 : 0 },
@@ -738,19 +740,21 @@ export default function InvitationExperience() {
           );
         }
 
-        floaters.forEach((floater, floaterIndex) => {
-          gsap.to(floater, {
-            y: floaterIndex % 2 ? -44 : 34,
-            rotate: floaterIndex % 2 ? -7 : 7,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: page,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: 1.2,
-            },
+        if (!useNativeTouchScroll) {
+          floaters.forEach((floater, floaterIndex) => {
+            gsap.to(floater, {
+              y: floaterIndex % 2 ? -44 : 34,
+              rotate: floaterIndex % 2 ? -7 : 7,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: page,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 1.2,
+              },
+            });
           });
-        });
+        }
       });
 
       ScrollTrigger.refresh();

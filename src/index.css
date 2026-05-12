@@ -2903,6 +2903,19 @@ h1, h2, h3, h4, h5, h6 {
     filter: none !important;
   }
 
+  .loader-wash,
+  .wash-layer {
+    clip-path: none;
+    border-radius: 46% 54% 52% 48%;
+  }
+
+  .star-field::before,
+  .star-field::after,
+  .jaali-layer {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+
   /* Touch browser performance fixes */
   .loader-grain,
   .grain-layer {
