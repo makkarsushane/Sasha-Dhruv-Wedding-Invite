@@ -458,8 +458,6 @@ h1, h2, h3, h4, h5, h6 {
 .arch-dot,
 .vector-dot {
   backface-visibility: hidden;
-  transform: translateZ(0);
-  will-change: transform, opacity;
 }
 
 .invitation-frame {
