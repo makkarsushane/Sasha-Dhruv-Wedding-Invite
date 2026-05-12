@@ -394,13 +394,13 @@ function FamilyPage() {
         <p className="family-small" data-reveal>
           of their daughter
         </p>
-        <p className="family-couple-name" data-reveal>
+        <p className="family-couple-name italic" data-reveal>
           Sasha
         </p>
-        <p className="family-with" data-reveal>
+        <p className="family-with italic" data-reveal>
           with
         </p>
-        <p className="family-couple-name" data-reveal>
+        <p className="family-couple-name italic" data-reveal>
           Dhruv
         </p>
         <p className="family-groom-line" data-reveal>
@@ -552,7 +552,7 @@ function ClosingPage() {
         <p className="closing-love" data-reveal>
           With love and anticipation
         </p>
-        <h2 data-reveal>Sushane Makkar</h2>
+        <h2 data-reveal style={{ fontSize: 'clamp(1.8rem, 4vw, 2.75rem)' }}>Sushane Makkar</h2>
         <div className="closing-signature" data-reveal>
           <strong>RSVP</strong>
           <p>Makkar family</p>

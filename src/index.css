@@ -2765,7 +2765,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (pointer: coarse) {
-  .opening-loader {
+  .opening-loader,
+  .invitation-experience,
+  .invitation-experience * {
     touch-action: pan-y pinch-zoom;
   }
 
@@ -2774,41 +2776,34 @@ h1, h2, h3, h4, h5, h6 {
     min-height: 100vh;
   }
 
-  .invitation-experience,
-  .invitation-experience * {
-    touch-action: pan-y pinch-zoom;
-  }
-
-  .invitation-experience *,
-  .opening-loader *,
-  .opening-loader *::before,
-  .opening-loader *::after,
-  .invitation-experience *::before,
-  .invitation-experience *::after {
-    animation: none !important;
-    transition-duration: 0.001ms !important;
-    will-change: auto !important;
-    backface-visibility: visible !important;
-  }
-
-  .invitation-frame,
-  .page-atmosphere,
-  .ceremony-vector,
-  .mughal-arch,
-  .star-field,
-  .star-field::before,
-  .star-field::after,
+  /* Only reduce GPU-heavy hints — do NOT kill animations or the page
+     will flash/refresh when the browser re-evaluates the media query
+     during pinch-zoom. */
+  .loader-wash,
+  .wash-layer,
+  .floating-line,
+  .floating-petal,
+  .star,
   .constellation,
-  .event-art::before,
-  .event-art .ceremony-vector,
+  .seal-ring,
+  .canopy-dot,
+  .arch-dot,
+  .vector-dot {
+    will-change: auto;
+  }
+
   .blessing-panel,
   .event-folio,
   .closing-frame,
-  .family-invitation,
-  .opening-loader,
-  .opening-loader * {
-    filter: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+  .family-invitation {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .event-choora .detail-item:nth-child(3) {
+    text-align: center;
+    justify-items: center;
   }
 }
