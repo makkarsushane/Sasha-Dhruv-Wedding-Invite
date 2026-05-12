@@ -8,6 +8,7 @@ import {
   invitationChapters,
   venue,
 } from '../../data/weddingData';
+import { useSmoothScroll } from '../../hooks/useSmoothScroll';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 ScrollTrigger.config({
@@ -602,6 +603,7 @@ function ClosingPage() {
 export default function InvitationExperience() {
   const root = useRef(null);
   const reducedMotion = useReducedMotion();
+  useSmoothScroll();
 
   useGSAP(
     () => {
