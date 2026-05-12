@@ -2801,8 +2801,7 @@ h1, h2, h3, h4, h5, h6 {
   /* Android Chrome Performance Fixes */
   .loader-grain,
   .grain-layer {
-    mix-blend-mode: normal !important;
-    opacity: 0.04 !important;
+    background-image: none !important;
   }
 
   .loader-wash,
