@@ -17,7 +17,8 @@ export default function Loader({ onComplete }) {
   const [phase, setPhase] = useState(0);
   const completedRef = useRef(false);
   const reducedMotion = useReducedMotion();
-  const liteMotion = reducedMotion || prefersLiteMotion();
+  const optimizedMotion = !reducedMotion && prefersLiteMotion();
+  const liteMotion = reducedMotion || optimizedMotion;
   const timings = liteMotion
     ? { phaseOne: 180, phaseTwo: 560, phaseThree: 980, phaseFour: 1450, finish: 2600 }
     : { phaseOne: 280, phaseTwo: 1250, phaseThree: 2450, phaseFour: 4300, finish: 5100 };
@@ -46,7 +47,9 @@ export default function Loader({ onComplete }) {
 
   const emblemVisible = liteMotion ? phase >= 1 : phase >= 2;
   const copyVisible = liteMotion ? phase >= 2 : phase >= 3;
-  const exitDuration = liteMotion ? 0.28 : 0.75;
+  const exitDuration = liteMotion ? 0.36 : 0.75;
+  const activePetals = optimizedMotion ? loaderPetals.slice(0, 4) : loaderPetals;
+  const drawDuration = optimizedMotion ? 1.1 : 2.1;
 
   return (
     <AnimatePresence>
@@ -74,9 +77,9 @@ export default function Loader({ onComplete }) {
             aria-hidden="true"
           />
 
-          {!liteMotion && (
+          {!reducedMotion && (
             <div className="loader-petal-field" aria-hidden="true">
-              {loaderPetals.map((petal, index) => (
+              {activePetals.map((petal, index) => (
                 <motion.span
                   key={index}
                   className="loader-petal"
@@ -89,8 +92,8 @@ export default function Loader({ onComplete }) {
                   }}
                   transition={{
                     delay: petal.delay,
-                    duration: 4.8,
-                    repeat: Infinity,
+                    duration: optimizedMotion ? 3.2 : 4.8,
+                    repeat: optimizedMotion ? 1 : Infinity,
                     ease: 'easeInOut',
                   }}
                 />
@@ -116,9 +119,9 @@ export default function Loader({ onComplete }) {
                   stroke="currentColor"
                   strokeWidth="0.7"
                   strokeDasharray="716"
-                  initial={liteMotion ? false : { strokeDashoffset: 716 }}
-                  animate={{ strokeDashoffset: phase >= 1 || liteMotion ? 0 : 716 }}
-                  transition={{ duration: liteMotion ? 0.01 : 2.1, ease: [0.22, 1, 0.36, 1] }}
+                  initial={reducedMotion ? false : { strokeDashoffset: 716 }}
+                  animate={{ strokeDashoffset: phase >= 1 || reducedMotion ? 0 : 716 }}
+                  transition={{ duration: reducedMotion ? 0.01 : drawDuration, ease: [0.22, 1, 0.36, 1] }}
                 />
                 <motion.circle
                   cx="130"
@@ -128,11 +131,11 @@ export default function Loader({ onComplete }) {
                   stroke="currentColor"
                   strokeWidth="0.35"
                   strokeDasharray="604"
-                  initial={liteMotion ? false : { strokeDashoffset: -604 }}
-                  animate={{ strokeDashoffset: phase >= 1 || liteMotion ? 0 : -604 }}
+                  initial={reducedMotion ? false : { strokeDashoffset: -604 }}
+                  animate={{ strokeDashoffset: phase >= 1 || reducedMotion ? 0 : -604 }}
                   transition={{
-                    duration: liteMotion ? 0.01 : 2.4,
-                    delay: liteMotion ? 0 : 0.28,
+                    duration: reducedMotion ? 0.01 : optimizedMotion ? 1.2 : 2.4,
+                    delay: optimizedMotion || reducedMotion ? 0.08 : 0.28,
                     ease: [0.22, 1, 0.36, 1],
                   }}
                 />
@@ -142,9 +145,12 @@ export default function Loader({ onComplete }) {
                   stroke="currentColor"
                   strokeWidth="0.35"
                   strokeDasharray="900"
-                  initial={liteMotion ? false : { strokeDashoffset: 900 }}
+                  initial={reducedMotion ? false : { strokeDashoffset: 900 }}
                   animate={{ strokeDashoffset: emblemVisible ? 0 : 900 }}
-                  transition={{ duration: liteMotion ? 0.01 : 2.6, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{
+                    duration: reducedMotion ? 0.01 : optimizedMotion ? 1.25 : 2.6,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
                 />
               </motion.svg>
 

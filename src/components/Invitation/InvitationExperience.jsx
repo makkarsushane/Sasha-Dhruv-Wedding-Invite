@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -578,11 +578,172 @@ export default function InvitationExperience() {
   const reducedMotion = useReducedMotion();
   const [liteMotion] = useState(() => prefersLiteMotion());
 
+  useEffect(() => {
+    if (!liteMotion || !root.current) return undefined;
+
+    const pages = Array.from(root.current.querySelectorAll('.invitation-page'));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle('is-active-page', entry.isIntersecting);
+        });
+      },
+      { rootMargin: '0px', threshold: 0.02 },
+    );
+
+    pages.forEach((page) => observer.observe(page));
+
+    return () => observer.disconnect();
+  }, [liteMotion]);
+
   useGSAP(
     () => {
-      if (reducedMotion || liteMotion) return;
+      if (reducedMotion) return;
 
       const pages = gsap.utils.toArray('.invitation-page');
+
+      if (liteMotion) {
+        pages.forEach((page) => {
+          const reveals = page.querySelectorAll('[data-reveal]');
+          const paper = page.querySelector('[data-paper]');
+          const frame = page.querySelector('[data-frame]');
+          const canopy = page.querySelector('[data-canopy]');
+          const garlands = page.querySelectorAll('[data-garlands] .garland');
+          const grounds = page.querySelectorAll('[data-ground]');
+          const art = page.querySelector('[data-art]');
+
+          if (frame) {
+            gsap.fromTo(
+              frame,
+              { autoAlpha: 0.35 },
+              {
+                autoAlpha: 1,
+                duration: 0.8,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: page,
+                  start: 'top 82%',
+                  toggleActions: 'play none none none',
+                },
+              },
+            );
+          }
+
+          if (canopy) {
+            gsap.fromTo(
+              canopy,
+              { y: -24, autoAlpha: 0.28, transformOrigin: '50% 0%' },
+              {
+                y: 0,
+                autoAlpha: 1,
+                duration: 0.9,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: page,
+                  start: 'top 82%',
+                  toggleActions: 'play none none none',
+                },
+              },
+            );
+          }
+
+          if (garlands.length) {
+            gsap.fromTo(
+              garlands,
+              { y: -18, autoAlpha: 0, transformOrigin: 'top center' },
+              {
+                y: 0,
+                autoAlpha: 1,
+                duration: 0.65,
+                stagger: 0.045,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: page,
+                  start: 'top 78%',
+                  toggleActions: 'play none none none',
+                },
+              },
+            );
+          }
+
+          if (grounds.length) {
+            gsap.fromTo(
+              grounds,
+              { y: 18, autoAlpha: 0 },
+              {
+                y: 0,
+                autoAlpha: 1,
+                duration: 0.7,
+                stagger: 0.05,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: page,
+                  start: 'top 78%',
+                  toggleActions: 'play none none none',
+                },
+              },
+            );
+          }
+
+          if (art) {
+            gsap.fromTo(
+              art,
+              { y: 24, scale: 0.98, autoAlpha: 0 },
+              {
+                y: 0,
+                scale: 1,
+                autoAlpha: 1,
+                duration: 0.8,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: page,
+                  start: 'top 76%',
+                  toggleActions: 'play none none none',
+                },
+              },
+            );
+          }
+
+          if (paper) {
+            gsap.fromTo(
+              paper,
+              { y: 22, scale: 0.985, autoAlpha: 0.82 },
+              {
+                y: 0,
+                scale: 1,
+                autoAlpha: 1,
+                duration: 0.85,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: page,
+                  start: 'top 76%',
+                  toggleActions: 'play none none none',
+                },
+              },
+            );
+          }
+
+          gsap.fromTo(
+            reveals,
+            { autoAlpha: 0, y: 18 },
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.68,
+              stagger: 0.035,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: page,
+                start: 'top 74%',
+                toggleActions: 'play none none none',
+              },
+            },
+          );
+        });
+
+        ScrollTrigger.refresh();
+        return;
+      }
 
       pages.forEach((page, pageIndex) => {
         const reveals = page.querySelectorAll('[data-reveal]');

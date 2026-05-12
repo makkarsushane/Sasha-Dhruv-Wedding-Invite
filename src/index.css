@@ -2801,13 +2801,13 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   /* Android Chrome Performance Fixes */
-  .loader-grain,
-  .grain-layer {
+  html.is-android .loader-grain,
+  html.is-android .grain-layer {
     background-image: none !important;
   }
 
-  .loader-wash,
-  .wash-layer {
+  html.is-android .loader-wash,
+  html.is-android .wash-layer {
     animation: none !important;
   }
 }
@@ -2828,47 +2828,68 @@ html.is-lite-motion .wash-layer {
   animation: none !important;
 }
 
+html.is-lite-motion .top-miniature-border {
+  animation: miniature-border-glow 5.2s ease-in-out infinite;
+}
+
+html.is-lite-motion .side-miniature-border {
+  animation: miniature-border-glow 5.6s ease-in-out infinite;
+}
+
 html.is-lite-motion .loader-petal,
 html.is-lite-motion .floating-petal,
-html.is-lite-motion .floating-line,
-html.is-lite-motion .top-miniature-border,
-html.is-lite-motion .side-miniature-border,
-html.is-lite-motion .canopy-fill,
 html.is-lite-motion .canopy-dot,
 html.is-lite-motion .hanging-garlands,
 html.is-lite-motion .garland,
 html.is-lite-motion .garland::before,
 html.is-lite-motion .garland::after,
 html.is-lite-motion .garland i,
-html.is-lite-motion .floral-ground::before,
-html.is-lite-motion .floral-ground::after,
-html.is-lite-motion .floral-ground span,
 html.is-lite-motion .arch-dot,
 html.is-lite-motion .vector-dot,
 html.is-lite-motion .event-art .ceremony-vector,
 html.is-lite-motion .star,
 html.is-lite-motion .constellation,
-html.is-lite-motion .jaali-layer,
-html.is-lite-motion .seal-ring,
-html.is-lite-motion .event-art::before,
-html.is-lite-motion .folio-leaf {
-  animation: none !important;
+html.is-lite-motion .seal-ring {
+  will-change: transform, opacity;
 }
 
-html.is-lite-motion .invitation-experience svg,
-html.is-lite-motion .invitation-experience svg * {
-  animation: none !important;
+html.is-lite-motion .jaali-layer,
+html.is-lite-motion .floral-ground::before,
+html.is-lite-motion .floral-ground::after,
+html.is-lite-motion .floral-ground span,
+html.is-lite-motion .event-art::before,
+html.is-lite-motion .folio-leaf {
+  animation-duration: 8s;
+}
+
+html.is-lite-motion .floating-petal {
+  animation-duration: 9s;
+}
+
+html.is-lite-motion .canopy-dot,
+html.is-lite-motion .arch-dot,
+html.is-lite-motion .vector-dot,
+html.is-lite-motion .star {
+  animation-duration: 4.8s;
+}
+
+html.is-lite-motion .seal-ring {
+  animation-duration: 9.5s;
 }
 
 html.is-lite-motion .star-field::before,
 html.is-lite-motion .star-field::after {
-  animation: none !important;
+  --lite-opacity-low: 0.16;
+  --lite-opacity-high: 0.28;
+  animation: lite-opacity-breathe 8s ease-in-out infinite alternate;
   mask-image: none;
   -webkit-mask-image: none;
-  opacity: 0.22;
 }
 
 html.is-lite-motion .jaali-layer {
+  --lite-opacity-low: 0.055;
+  --lite-opacity-high: 0.12;
+  animation: lite-opacity-breathe 7s ease-in-out infinite alternate;
   mask-image: none;
   -webkit-mask-image: none;
 }
@@ -2896,6 +2917,14 @@ html.is-lite-motion .page-atmosphere {
   opacity: 0.42;
 }
 
+html.is-lite-motion .invitation-page:not(.is-active-page) *,
+html.is-lite-motion .invitation-page:not(.is-active-page)::before,
+html.is-lite-motion .invitation-page:not(.is-active-page)::after,
+html.is-lite-motion .invitation-page:not(.is-active-page) *::before,
+html.is-lite-motion .invitation-page:not(.is-active-page) *::after {
+  animation-play-state: paused !important;
+}
+
 html.is-lite-motion .monogram-seal img,
 html.is-lite-motion .loader-monogram {
   box-shadow: 0 12px 34px rgba(65, 42, 26, 0.12);
@@ -2906,6 +2935,15 @@ html.is-lite-motion .event-folio,
 html.is-lite-motion .closing-frame,
 html.is-lite-motion .family-invitation {
   box-shadow: 0 14px 40px rgba(55, 35, 26, 0.08);
+}
+
+@keyframes lite-opacity-breathe {
+  0%, 100% {
+    opacity: var(--lite-opacity-low, 0.18);
+  }
+  50% {
+    opacity: var(--lite-opacity-high, 0.32);
+  }
 }
 
 @media (max-width: 767px) {
