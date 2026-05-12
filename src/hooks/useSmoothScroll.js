@@ -6,22 +6,20 @@ export function useSmoothScroll() {
   const lenisRef = useRef(null);
 
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
-
     const isTouchDevice =
       window.matchMedia('(pointer: coarse)').matches || navigator.maxTouchPoints > 0;
 
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || isTouchDevice) {
+      return undefined;
+    }
+
     const lenis = new Lenis({
-      duration: isTouchDevice ? 1.12 : 0.82,
+      duration: 0.82,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
-      smoothWheel: !isTouchDevice,
-      syncTouch: isTouchDevice,
-      syncTouchLerp: 0.055,
-      touchInertiaExponent: 1.18,
+      smoothWheel: true,
       wheelMultiplier: 0.86,
-      touchMultiplier: isTouchDevice ? 0.58 : 1,
       autoResize: false,
     });
 
@@ -32,14 +30,10 @@ export function useSmoothScroll() {
 
     lenis.on('scroll', ScrollTrigger.update);
 
-    function isPinchZooming() {
-      return window.visualViewport && Math.abs(window.visualViewport.scale - 1) > 0.01;
-    }
-
     function handleResize() {
       const widthChanged = window.innerWidth !== lastWindowWidth;
 
-      if (isTouchDevice && (!widthChanged || isPinchZooming())) return;
+      if (!widthChanged) return;
 
       lastWindowWidth = window.innerWidth;
       cancelAnimationFrame(resizeFrameId);
