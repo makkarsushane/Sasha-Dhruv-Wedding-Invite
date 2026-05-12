@@ -572,7 +572,7 @@ export default function InvitationExperience() {
 
   useGSAP(
     () => {
-      if (reducedMotion || isTouchExperience()) return;
+      if (reducedMotion) return;
 
       const pages = gsap.utils.toArray('.invitation-page');
 
