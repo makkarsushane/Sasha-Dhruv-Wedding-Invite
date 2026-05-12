@@ -1,8 +1,9 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import { prefersLiteMotion } from '../../utils/performance';
 import {
   couple,
   invitationChapters,
@@ -308,12 +309,22 @@ function CeremonyVector({ variant }) {
 }
 
 function MonogramSeal({ large = false, quiet = false }) {
+  const priority = large && !quiet;
+
   return (
     <div className={`monogram-seal ${large ? 'is-large' : ''} ${quiet ? 'is-quiet' : ''}`}>
       <span className="seal-ring ring-one" aria-hidden="true" />
       <span className="seal-ring ring-two" aria-hidden="true" />
       <span className="seal-ring ring-three" aria-hidden="true" />
-      <img src={monogramUrl} alt={quiet ? '' : 'Sasha and Dhruv monogram'} />
+      <img
+        src={monogramUrl}
+        alt={quiet ? '' : 'Sasha and Dhruv monogram'}
+        width="1280"
+        height="1280"
+        loading={priority ? 'eager' : 'lazy'}
+        decoding="async"
+        fetchPriority={priority ? 'high' : 'auto'}
+      />
     </div>
   );
 }
@@ -562,17 +573,14 @@ function ClosingPage() {
   );
 }
 
-function isTouchExperience() {
-  return window.matchMedia('(pointer: coarse)').matches || navigator.maxTouchPoints > 0;
-}
-
 export default function InvitationExperience() {
   const root = useRef(null);
   const reducedMotion = useReducedMotion();
+  const [liteMotion] = useState(() => prefersLiteMotion());
 
   useGSAP(
     () => {
-      if (reducedMotion) return;
+      if (reducedMotion || liteMotion) return;
 
       const pages = gsap.utils.toArray('.invitation-page');
 
@@ -796,11 +804,11 @@ export default function InvitationExperience() {
 
       ScrollTrigger.refresh();
     },
-    { scope: root, dependencies: [reducedMotion] },
+    { scope: root, dependencies: [liteMotion, reducedMotion] },
   );
 
   return (
-    <main ref={root} className="invitation-experience">
+    <main ref={root} className={`invitation-experience ${liteMotion ? 'is-lite-motion' : ''}`}>
       <CoverPage />
       <FamilyPage />
       {invitationChapters.map((chapter, index) => (

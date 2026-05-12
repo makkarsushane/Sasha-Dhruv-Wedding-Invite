@@ -458,6 +458,8 @@ h1, h2, h3, h4, h5, h6 {
 .arch-dot,
 .vector-dot {
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .invitation-frame {
@@ -2808,6 +2810,102 @@ h1, h2, h3, h4, h5, h6 {
   .wash-layer {
     animation: none !important;
   }
+}
+
+html.is-lite-motion .opening-loader {
+  contain: layout paint style;
+}
+
+html.is-lite-motion .loader-grain,
+html.is-lite-motion .grain-layer {
+  display: none;
+}
+
+html.is-lite-motion .loader-wash,
+html.is-lite-motion .wash-layer {
+  clip-path: none;
+  filter: none;
+  animation: none !important;
+}
+
+html.is-lite-motion .loader-petal,
+html.is-lite-motion .floating-petal,
+html.is-lite-motion .floating-line,
+html.is-lite-motion .top-miniature-border,
+html.is-lite-motion .side-miniature-border,
+html.is-lite-motion .canopy-fill,
+html.is-lite-motion .canopy-dot,
+html.is-lite-motion .hanging-garlands,
+html.is-lite-motion .garland,
+html.is-lite-motion .garland::before,
+html.is-lite-motion .garland::after,
+html.is-lite-motion .garland i,
+html.is-lite-motion .floral-ground::before,
+html.is-lite-motion .floral-ground::after,
+html.is-lite-motion .floral-ground span,
+html.is-lite-motion .arch-dot,
+html.is-lite-motion .vector-dot,
+html.is-lite-motion .event-art .ceremony-vector,
+html.is-lite-motion .star,
+html.is-lite-motion .constellation,
+html.is-lite-motion .jaali-layer,
+html.is-lite-motion .seal-ring,
+html.is-lite-motion .event-art::before,
+html.is-lite-motion .folio-leaf {
+  animation: none !important;
+}
+
+html.is-lite-motion .invitation-experience svg,
+html.is-lite-motion .invitation-experience svg * {
+  animation: none !important;
+}
+
+html.is-lite-motion .star-field::before,
+html.is-lite-motion .star-field::after {
+  animation: none !important;
+  mask-image: none;
+  -webkit-mask-image: none;
+  opacity: 0.22;
+}
+
+html.is-lite-motion .jaali-layer {
+  mask-image: none;
+  -webkit-mask-image: none;
+}
+
+html.is-lite-motion .palace-canopy,
+html.is-lite-motion .canopy-band,
+html.is-lite-motion .mughal-arch,
+html.is-lite-motion .event-art .ceremony-vector,
+html.is-lite-motion .event-sangeet .palace-canopy,
+html.is-lite-motion .monogram-glow,
+html.is-lite-motion .monogram-glow:hover {
+  filter: none !important;
+}
+
+html.is-lite-motion .blessing-panel,
+html.is-lite-motion .event-folio,
+html.is-lite-motion .closing-frame,
+html.is-lite-motion .family-invitation,
+html.is-lite-motion .glass {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+html.is-lite-motion .page-atmosphere {
+  opacity: 0.42;
+}
+
+html.is-lite-motion .monogram-seal img,
+html.is-lite-motion .loader-monogram {
+  box-shadow: 0 12px 34px rgba(65, 42, 26, 0.12);
+}
+
+html.is-lite-motion .blessing-panel,
+html.is-lite-motion .event-folio,
+html.is-lite-motion .closing-frame,
+html.is-lite-motion .family-invitation {
+  box-shadow: 0 14px 40px rgba(55, 35, 26, 0.08);
 }
 
 @media (max-width: 767px) {

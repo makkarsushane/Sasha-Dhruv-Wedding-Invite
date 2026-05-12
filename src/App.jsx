@@ -1,11 +1,44 @@
-import { useState, useCallback } from 'react';
-import { useSmoothScroll } from './hooks/useSmoothScroll';
+import { lazy, Suspense, useCallback, useEffect, useState } from 'react';
 import Loader from './components/Loader/Loader';
-import InvitationExperience from './components/Invitation/InvitationExperience';
+
+let invitationExperiencePromise;
+
+function loadInvitationExperience() {
+  invitationExperiencePromise ??= import('./components/Invitation/InvitationExperience');
+  return invitationExperiencePromise;
+}
+
+const InvitationExperience = lazy(loadInvitationExperience);
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
-  useSmoothScroll();
+
+  useEffect(() => {
+    let idleId;
+    let timeoutId;
+    let frameId;
+
+    const preloadInvitation = () => {
+      void loadInvitationExperience();
+    };
+
+    const schedulePreload = () => {
+      if ('requestIdleCallback' in window) {
+        idleId = window.requestIdleCallback(preloadInvitation, { timeout: 1400 });
+        return;
+      }
+
+      timeoutId = window.setTimeout(preloadInvitation, 500);
+    };
+
+    frameId = window.requestAnimationFrame(schedulePreload);
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      if (idleId !== undefined) window.cancelIdleCallback(idleId);
+      if (timeoutId !== undefined) window.clearTimeout(timeoutId);
+    };
+  }, []);
 
   const handleLoaderComplete = useCallback(() => {
     setLoaded(true);
@@ -13,9 +46,11 @@ export default function App() {
 
   return (
     <div className="min-h-screen">
-      <Loader onComplete={handleLoaderComplete} />
+      <Suspense fallback={null}>
+        {loaded && <InvitationExperience />}
+      </Suspense>
 
-      {loaded && <InvitationExperience />}
+      <Loader onComplete={handleLoaderComplete} />
     </div>
   );
 }
