@@ -2763,3 +2763,52 @@ h1, h2, h3, h4, h5, h6 {
     scroll-behavior: auto !important;
   }
 }
+
+@media (pointer: coarse) {
+  .opening-loader {
+    touch-action: pan-y pinch-zoom;
+  }
+
+  .invitation-page {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .invitation-experience,
+  .invitation-experience * {
+    touch-action: pan-y pinch-zoom;
+  }
+
+  .invitation-experience *,
+  .opening-loader *,
+  .opening-loader *::before,
+  .opening-loader *::after,
+  .invitation-experience *::before,
+  .invitation-experience *::after {
+    animation: none !important;
+    transition-duration: 0.001ms !important;
+    will-change: auto !important;
+    backface-visibility: visible !important;
+  }
+
+  .invitation-frame,
+  .page-atmosphere,
+  .ceremony-vector,
+  .mughal-arch,
+  .star-field,
+  .star-field::before,
+  .star-field::after,
+  .constellation,
+  .event-art::before,
+  .event-art .ceremony-vector,
+  .blessing-panel,
+  .event-folio,
+  .closing-frame,
+  .family-invitation,
+  .opening-loader,
+  .opening-loader * {
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
