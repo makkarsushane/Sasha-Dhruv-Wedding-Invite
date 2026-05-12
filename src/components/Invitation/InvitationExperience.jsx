@@ -1,3 +1,5 @@
+'use client';
+
 import { useRef } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import gsap from 'gsap';
@@ -9,6 +11,7 @@ import {
   venue,
 } from '../../data/weddingData';
 import { useSmoothScroll } from '../../hooks/useSmoothScroll';
+import { assetPath } from '../../lib/assetPath';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 ScrollTrigger.config({
@@ -16,9 +19,9 @@ ScrollTrigger.config({
   autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load',
 });
 
-const monogramUrl = `${import.meta.env.BASE_URL}monogram.jpg`;
-const floralCanopyUrl = `${import.meta.env.BASE_URL}ornaments/floral-canopy.png`;
-const floralCornerUrl = `${import.meta.env.BASE_URL}ornaments/floral-corner.png`;
+const monogramUrl = assetPath('/monogram.jpg');
+const floralCanopyUrl = assetPath('/ornaments/floral-canopy.png');
+const floralCornerUrl = assetPath('/ornaments/floral-corner.png');
 
 const frameOrnamentStyle = {
   '--floral-canopy-image': `url("${floralCanopyUrl}")`,

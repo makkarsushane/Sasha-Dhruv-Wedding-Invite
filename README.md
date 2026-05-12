@@ -15,4 +15,4 @@ npm run dev
 npm run build
 ```
 
-The production output is generated in `dist/`.
+The static production output is generated in `out/`.

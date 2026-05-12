@@ -1,16 +1,18 @@
+'use client';
+
 import { lazy, Suspense, useCallback, useEffect, useState } from 'react';
-import Loader from './components/Loader/Loader';
+import Loader from '../Loader/Loader';
 
 let invitationExperiencePromise;
 
 function loadInvitationExperience() {
-  invitationExperiencePromise ??= import('./components/Invitation/InvitationExperience');
+  invitationExperiencePromise ??= import('../Invitation/InvitationExperience');
   return invitationExperiencePromise;
 }
 
 const InvitationExperience = lazy(loadInvitationExperience);
 
-export default function App() {
+export default function WeddingApp() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {

@@ -1,5 +1,8 @@
+'use client';
+
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { assetPath } from '../../lib/assetPath';
 
 const loaderPetals = [
   { left: '16%', top: '22%', delay: 0.1 },
@@ -10,7 +13,7 @@ const loaderPetals = [
   { left: '62%', top: '78%', delay: 2 },
 ];
 
-const monogramUrl = `${import.meta.env.BASE_URL}monogram.jpg`;
+const monogramUrl = assetPath('/monogram.jpg');
 
 export default function Loader({ onComplete }) {
   const [phase, setPhase] = useState(0);
