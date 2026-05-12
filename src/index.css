@@ -86,7 +86,7 @@
 
 html {
   scroll-behavior: auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -99,7 +99,7 @@ body {
   background-color: var(--color-ivory);
   color: var(--color-charcoal);
   overflow-x: hidden;
-  overscroll-behavior-y: contain;
+  overscroll-behavior: none;
   line-height: 1.7;
   font-weight: 300;
   letter-spacing: 0;
