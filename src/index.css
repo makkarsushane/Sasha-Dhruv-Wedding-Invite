@@ -444,6 +444,8 @@ h1, h2, h3, h4, h5, h6 {
 .garland::before,
 .garland::after,
 .garland i,
+.floral-canopy,
+.floral-spray,
 .floral-ground,
 .floral-ground::before,
 .floral-ground::after,
@@ -470,8 +472,102 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
 }
 
+.floral-border {
+  --floral-filter: saturate(1.12) brightness(1.04);
+  --floral-canopy-opacity: 0.94;
+  --floral-spray-opacity: 0.54;
+  --floral-spray-peak-opacity: 0.66;
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.floral-canopy {
+  position: absolute;
+  top: clamp(-72px, -4vw, -34px);
+  left: 50%;
+  width: min(1720px, 118vw);
+  aspect-ratio: 1.5;
+  background-image: var(--floral-canopy-image);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: var(--floral-canopy-opacity);
+  transform: translate3d(-50%, 0, 0);
+  transform-origin: top center;
+  filter: var(--floral-filter) drop-shadow(0 22px 28px rgba(87, 46, 26, 0.08));
+  contain: layout paint;
+}
+
+.floral-spray {
+  position: absolute;
+  width: clamp(280px, 30vw, 500px);
+  aspect-ratio: 1.26;
+  background-image: var(--floral-corner-image);
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: var(--floral-spray-opacity);
+  transform-origin: center;
+  filter: var(--floral-filter);
+  animation: floral-spray-breathe 10.5s ease-in-out infinite alternate;
+  contain: layout paint;
+}
+
+.floral-spray-bottom-left {
+  bottom: -78px;
+  left: -88px;
+  transform: scaleY(-1) rotate(-7deg);
+  animation-delay: -2.4s;
+}
+
+.floral-spray-bottom-right {
+  right: -88px;
+  bottom: -78px;
+  transform: scale(-1) rotate(-7deg);
+  animation-delay: -3.2s;
+}
+
+.event-sangeet .floral-border {
+  --floral-filter: hue-rotate(12deg) saturate(1.08) brightness(1.05);
+  --floral-canopy-opacity: 0.88;
+  --floral-spray-opacity: 0.46;
+  --floral-spray-peak-opacity: 0.58;
+}
+
+.event-haldi-mehndi .floral-border {
+  --floral-filter: hue-rotate(32deg) saturate(1.12) brightness(1.08);
+  --floral-canopy-opacity: 0.9;
+  --floral-spray-opacity: 0.5;
+  --floral-spray-peak-opacity: 0.62;
+}
+
+.event-choora .floral-border,
+.closing-page .floral-border {
+  --floral-filter: hue-rotate(-5deg) saturate(1.08) brightness(1.04);
+  --floral-canopy-opacity: 0.9;
+  --floral-spray-opacity: 0.48;
+  --floral-spray-peak-opacity: 0.6;
+}
+
+.event-wedding-day .floral-border {
+  --floral-filter: hue-rotate(-16deg) saturate(1.18) brightness(1);
+  --floral-canopy-opacity: 0.92;
+  --floral-spray-opacity: 0.5;
+  --floral-spray-peak-opacity: 0.62;
+}
+
+.family-page .floral-border {
+  --floral-filter: hue-rotate(34deg) saturate(0.98) brightness(1.08);
+  --floral-canopy-opacity: 0.84;
+  --floral-spray-opacity: 0.42;
+  --floral-spray-peak-opacity: 0.52;
+}
+
 .top-miniature-border {
   position: absolute;
+  z-index: 2;
   top: 12px;
   left: 18px;
   right: 18px;
@@ -490,6 +586,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .side-miniature-border {
   position: absolute;
+  z-index: 2;
   top: 28px;
   bottom: 22px;
   width: 22px;
@@ -514,11 +611,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .palace-canopy {
+  --palace-canopy-width: clamp(980px, 78vw, 1260px);
   position: absolute;
+  z-index: 1;
   top: 0;
   left: 50%;
-  width: clamp(980px, 78vw, 1260px);
-  transform: translateX(-50%);
+  width: var(--palace-canopy-width);
+  margin-left: calc(var(--palace-canopy-width) * -0.5);
+  transform-origin: 50% 0%;
+  transform-box: border-box;
   opacity: 0.62;
   filter: drop-shadow(0 24px 38px rgba(70, 45, 30, 0.08));
   overflow: visible;
@@ -564,6 +665,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .hanging-garlands {
   position: absolute;
+  z-index: 1;
   top: 15%;
   left: 0;
   right: 0;
@@ -1940,6 +2042,15 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+@keyframes floral-spray-breathe {
+  0%, 100% {
+    opacity: var(--floral-spray-opacity);
+  }
+  50% {
+    opacity: var(--floral-spray-peak-opacity);
+  }
+}
+
 @keyframes ornament-panel-breathe {
   0%, 100% {
     opacity: 0.56;
@@ -2174,6 +2285,28 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0.1;
   }
 
+  .floral-canopy {
+    top: -30px;
+    width: max(640px, 158vw);
+  }
+
+  .floral-spray {
+    width: 220px;
+    height: auto;
+  }
+
+  .floral-spray-bottom-left {
+    bottom: -58px;
+    left: -88px;
+    transform: scaleY(-1) rotate(-9deg) scale(0.82);
+  }
+
+  .floral-spray-bottom-right {
+    right: -88px;
+    bottom: -58px;
+    transform: scale(-1) rotate(-9deg) scale(0.82);
+  }
+
   .top-miniature-border {
     top: 10px;
     left: 14px;
@@ -2200,8 +2333,8 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .palace-canopy {
+    --palace-canopy-width: max(680px, 166vw);
     top: -46px;
-    width: 166vw;
     opacity: 0.52;
   }
 
@@ -2814,6 +2947,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 767px) {
   .event-choora .detail-item:nth-child(3) {
+    grid-column: 1 / -1;
     text-align: center;
     justify-items: center;
   }

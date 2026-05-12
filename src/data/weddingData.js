@@ -189,7 +189,7 @@ export const invitationChapters = [
     id: 'wedding-day',
     sequence: '04',
     day: 'Day Two',
-    title: 'Wedding Day',
+    title: 'Wedding Ceremony',
     subtitle: 'Barat, pheras and dinner',
     date: 'Monday, 29 June 2026',
     time: '7:30 PM onward',

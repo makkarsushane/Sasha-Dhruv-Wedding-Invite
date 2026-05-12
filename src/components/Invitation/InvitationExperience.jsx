@@ -16,6 +16,13 @@ ScrollTrigger.config({
 });
 
 const monogramUrl = `${import.meta.env.BASE_URL}monogram.jpg`;
+const floralCanopyUrl = `${import.meta.env.BASE_URL}ornaments/floral-canopy.png`;
+const floralCornerUrl = `${import.meta.env.BASE_URL}ornaments/floral-corner.png`;
+
+const frameOrnamentStyle = {
+  '--floral-canopy-image': `url("${floralCanopyUrl}")`,
+  '--floral-corner-image': `url("${floralCornerUrl}")`,
+};
 
 const coverPalette = {
   bg: '#f8efe3',
@@ -110,9 +117,29 @@ function Atmosphere({ motif = 'mandap', quiet = false }) {
   );
 }
 
+function FloralSpray({ position }) {
+  return <div className={`floral-spray floral-spray-${position}`} />;
+}
+
+function FloralBorder() {
+  return (
+    <div className="floral-border" aria-hidden="true">
+      <div className="floral-canopy" />
+      <FloralSpray position="bottom-left" />
+      <FloralSpray position="bottom-right" />
+    </div>
+  );
+}
+
 function InvitationFrame({ variant = 'classic' }) {
   return (
-    <div className={`invitation-frame frame-${variant}`} data-frame aria-hidden="true">
+    <div
+      className={`invitation-frame frame-${variant}`}
+      data-frame
+      aria-hidden="true"
+      style={frameOrnamentStyle}
+    >
+      <FloralBorder />
       <div className="top-miniature-border" />
       <div className="side-miniature-border side-left" />
       <div className="side-miniature-border side-right" />
