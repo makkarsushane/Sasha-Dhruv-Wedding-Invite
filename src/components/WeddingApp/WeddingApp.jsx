@@ -43,11 +43,13 @@ export default function WeddingApp() {
   }, []);
 
   const handleLoaderComplete = useCallback(() => {
-    setLoaded(true);
+    return loadInvitationExperience().then(() => {
+      setLoaded(true);
+    });
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="wedding-app-shell min-h-screen">
       <Suspense fallback={null}>
         {loaded && <InvitationExperience />}
       </Suspense>

@@ -192,7 +192,7 @@ export const invitationChapters = [
     title: 'Wedding Ceremony',
     subtitle: 'Barat, pheras and dinner',
     date: 'Monday, 29 June 2026',
-    time: '7:30 PM onward',
+    time: '7:30 PM onwards',
     venue: 'Grand Mansion Hall',
     attire: null,
     description:

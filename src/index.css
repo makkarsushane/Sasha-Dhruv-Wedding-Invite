@@ -219,6 +219,11 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-body);
 }
 
+.wedding-app-shell {
+  min-height: 100vh;
+  background: #f8efe3;
+}
+
 .opening-loader {
   position: fixed;
   inset: 0;
@@ -2205,6 +2210,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 699px) {
+  .loader-stage {
+    width: min(88vw, 430px);
+    gap: 30px;
+  }
+
+  .loader-emblem {
+    width: clamp(250px, 70vw, 300px);
+  }
+
+  .loader-copy h1 {
+    font-size: clamp(2.85rem, 11.5vw, 3.4rem);
+  }
+
+  .loader-copy p,
+  .loader-copy span {
+    font-size: 0.82rem;
+  }
+
   .invitation-page {
     height: 100svh;
     min-height: 100svh;
@@ -2390,7 +2413,7 @@ h1, h2, h3, h4, h5, h6 {
   .cover-monogram {
     position: relative;
     z-index: 2;
-    margin: 48px 0 12px;
+    margin: 38px 0 14px;
   }
 
   .monogram-seal {
@@ -2398,11 +2421,11 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .monogram-seal.is-large {
-    width: 108px;
+    width: 136px;
   }
 
   .cover-copy {
-    width: min(100%, 360px);
+    width: min(100%, 380px);
     margin-inline: auto;
   }
 
@@ -2417,18 +2440,18 @@ h1, h2, h3, h4, h5, h6 {
 
   .cover-title {
     gap: 1px;
-    font-size: 3.62rem;
+    font-size: 4.08rem;
     line-height: 0.86;
   }
 
   .cover-title em {
     margin: 10px 0 8px;
-    font-size: 1.12rem;
+    font-size: 1.24rem;
   }
 
   .cover-date {
     margin-top: 18px;
-    font-size: 0.82rem;
+    font-size: 0.9rem;
   }
 
   .cover-footer-note {
@@ -2438,7 +2461,7 @@ h1, h2, h3, h4, h5, h6 {
     display: grid;
     justify-content: center;
     gap: 0;
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     line-height: 1.35;
   }
 
@@ -2829,7 +2852,11 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .cover-title {
-    font-size: 3.34rem;
+    font-size: 3.76rem;
+  }
+
+  .monogram-seal.is-large {
+    width: 128px;
   }
 
   .family-copy h2,
@@ -2841,7 +2868,7 @@ h1, h2, h3, h4, h5, h6 {
   .cover-footer-note {
     left: 30px;
     right: 30px;
-    font-size: 0.7rem;
+    font-size: 0.74rem;
   }
 
   .event-folio {

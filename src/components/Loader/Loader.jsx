@@ -22,8 +22,12 @@ export default function Loader({ onComplete }) {
   const finish = useCallback(() => {
     if (completedRef.current) return;
     completedRef.current = true;
-    setPhase(5);
-    setTimeout(() => onComplete?.(), 650);
+
+    Promise.resolve(onComplete?.())
+      .catch(() => undefined)
+      .then(() => {
+        window.requestAnimationFrame(() => setPhase(5));
+      });
   }, [onComplete]);
 
   useEffect(() => {
@@ -47,8 +51,8 @@ export default function Loader({ onComplete }) {
         <motion.div
           className="opening-loader"
           onClick={handleSkip}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+          exit={{ opacity: [1, 0.84, 0], scale: 1.018 }}
+          transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1] }}
           aria-label="Opening invitation"
         >
           <div className="loader-grain" aria-hidden="true" />
