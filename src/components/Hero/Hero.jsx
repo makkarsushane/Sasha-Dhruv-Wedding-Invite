@@ -93,7 +93,7 @@ export default function Hero() {
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
           >
-            Sasha
+            Dhruv
           </motion.h1>
         </div>
 
@@ -116,7 +116,7 @@ export default function Hero() {
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
           >
-            Dhruv
+            Sasha
           </motion.h1>
         </div>
 

@@ -47,7 +47,7 @@ export default function Footer() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          Sasha <span className="text-gold italic">&</span> Dhruv
+          Dhruv <span className="text-gold italic">&</span> Sasha
         </motion.h2>
 
         <motion.p

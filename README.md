@@ -1,6 +1,6 @@
-# Sasha Dhruv Wedding Invite
+# Dhruv Sasha Wedding Invite
 
-A cinematic digital wedding invitation experience for Sasha and Dhruv.
+A cinematic digital wedding invitation experience for Dhruv and Sasha.
 
 ## Development
 

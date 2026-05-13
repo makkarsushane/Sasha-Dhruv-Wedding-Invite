@@ -3,13 +3,13 @@ import '../src/index.css';
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 export const metadata = {
-  title: 'Sasha weds Dhruv | Digital Wedding Invitation',
+  title: 'Dhruv weds Sasha | Digital Wedding Invitation',
   description:
-    'A handcrafted digital wedding invitation for Sasha Makkar and Dhruv Kundu. 28-29 June 2026, Calista Resort, New Delhi.',
+    'A handcrafted digital wedding invitation for Dhruv Kundu and Sasha Makkar. 28-29 June 2026, Calista Resort, New Delhi.',
   openGraph: {
-    title: 'Sasha weds Dhruv | Digital Wedding Invitation',
+    title: 'Dhruv weds Sasha | Digital Wedding Invitation',
     description:
-      'A handcrafted invitation experience for the wedding celebrations of Sasha and Dhruv. 28-29 June 2026.',
+      'A handcrafted invitation experience for the wedding celebrations of Dhruv and Sasha. 28-29 June 2026.',
     images: [
       {
         url: 'https://makkarsushane.github.io/Sasha-Dhruv-Wedding-Invite/monogram.jpg',
