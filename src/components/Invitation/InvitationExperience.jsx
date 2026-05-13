@@ -473,6 +473,10 @@ function EventPage({ chapter, index }) {
         </div>
 
         <article className="event-folio" data-paper>
+          {!isWeddingDay && (
+            <span className="event-text-ornament event-text-ornament-top" data-ornament aria-hidden="true" />
+          )}
+
           <h2 data-reveal>{chapter.title}</h2>
 
           <div className="detail-grid" data-reveal>
@@ -508,6 +512,8 @@ function EventPage({ chapter, index }) {
               {chapter.note}
             </p>
           )}
+
+          <span className="event-text-ornament event-text-ornament-bottom" data-ornament aria-hidden="true" />
         </article>
       </div>
     </section>
@@ -563,6 +569,7 @@ export default function InvitationExperience() {
       pages.forEach((page, pageIndex) => {
         const reveals = page.querySelectorAll('[data-reveal]');
         const paper = page.querySelector('[data-paper]');
+        const ornaments = page.querySelectorAll('[data-ornament]');
         const floaters = page.querySelectorAll('[data-float]');
         const marquee = page.querySelector('[data-marquee] .chapter-marquee-track');
         const frame = page.querySelector('[data-frame]');
@@ -570,6 +577,7 @@ export default function InvitationExperience() {
         const garlands = page.querySelectorAll('[data-garlands] .garland');
         const grounds = page.querySelectorAll('[data-ground]');
         const art = page.querySelector('[data-art]');
+        const isEventPage = page.classList.contains('event-page');
 
         gsap.fromTo(
           page,
@@ -639,12 +647,28 @@ export default function InvitationExperience() {
           );
         }
 
-        if (paper) {
+        if (paper && isEventPage && useNativeTouchScroll) {
+          tl.fromTo(
+            paper,
+            { autoAlpha: 0, scale: 0.985 },
+            { autoAlpha: 1, scale: 1, duration: 1.05, ease: 'power2.out' },
+            0.6
+          );
+        } else if (paper) {
           tl.fromTo(
             paper,
             { clipPath: 'inset(10% 7% 10% 7%)', scale: 0.96, y: 34, rotateX: 7, transformPerspective: 900, transformOrigin: '50% 100%' },
             { clipPath: 'inset(0% 0% 0% 0%)', scale: 1, y: 0, rotateX: 0, duration: 1.32, ease: 'power3.out' },
             0.6
+          );
+        }
+
+        if (ornaments.length) {
+          tl.fromTo(
+            ornaments,
+            { autoAlpha: 0, clipPath: 'inset(0 50% 0 50%)' },
+            { autoAlpha: 1, clipPath: 'inset(0 0% 0 0%)', duration: 0.95, stagger: 0.12, ease: 'power2.out' },
+            0.72
           );
         }
 
