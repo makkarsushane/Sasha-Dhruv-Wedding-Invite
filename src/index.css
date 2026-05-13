@@ -342,6 +342,35 @@ h3.font-light {
   z-index: -1;
 }
 
+.page-atmosphere::before,
+.page-atmosphere::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.page-atmosphere::before {
+  inset: 0;
+  opacity: 0.11;
+  background-image:
+    radial-gradient(circle at 50% 50%, transparent 0 13px, color-mix(in srgb, var(--page-accent), transparent 58%) 14px 15px, transparent 16px 27px, color-mix(in srgb, var(--page-deep), transparent 78%) 28px 29px, transparent 30px),
+    repeating-conic-gradient(from 45deg, color-mix(in srgb, var(--page-accent), transparent 84%) 0 9deg, transparent 9deg 18deg);
+  background-size: 132px 132px, 176px 176px;
+  background-position: 50% 18%, 50% 72%;
+  mix-blend-mode: multiply;
+}
+
+.page-atmosphere::after {
+  inset: 8% 4%;
+  opacity: 0.12;
+  background:
+    radial-gradient(circle at 50% 0, transparent 0 42px, color-mix(in srgb, var(--page-deep), transparent 72%) 43px 44px, transparent 45px 66px, color-mix(in srgb, var(--page-accent), transparent 76%) 67px 68px, transparent 69px),
+    radial-gradient(circle at 50% 100%, transparent 0 40px, color-mix(in srgb, var(--page-accent), transparent 72%) 41px 42px, transparent 43px 64px, color-mix(in srgb, var(--page-deep), transparent 80%) 65px 66px, transparent 67px);
+  background-repeat: no-repeat;
+  background-size: min(86vw, 460px) min(86vw, 460px);
+  background-position: center top, center bottom;
+}
+
 .mughal-arch,
 .ceremony-vector,
 .star-field,
@@ -2044,6 +2073,17 @@ h3.font-light {
     opacity: 0.55;
   }
 
+  .page-atmosphere::before {
+    opacity: 0.13;
+    background-size: 104px 104px, 138px 138px;
+  }
+
+  .page-atmosphere::after {
+    inset: 9% 0;
+    opacity: 0.1;
+    background-size: 84vw 84vw;
+  }
+
   .wash-layer {
     top: 18%;
     left: -32%;
@@ -2242,9 +2282,9 @@ h3.font-light {
   }
 
   .event-page .event-shell {
-    width: min(100%, 324px);
+    width: min(100%, 332px);
     min-height: calc(100svh - 44px);
-    padding: clamp(76px, 12svh, 112px) 0 clamp(66px, 10svh, 96px);
+    padding: clamp(92px, 13svh, 118px) 0 clamp(62px, 8svh, 86px);
     justify-content: center;
     gap: 2px;
   }
@@ -2274,7 +2314,7 @@ h3.font-light {
     width: min(100%, 350px);
     gap: clamp(8px, 1.05vh, 11px);
     padding: 30px 18px 24px;
-    margin-top: clamp(18px, 4svh, 34px);
+    margin-top: clamp(42px, 7svh, 64px);
     border-color: transparent;
     background: transparent;
     box-shadow: none;
@@ -2294,6 +2334,12 @@ h3.font-light {
     text-shadow: 0 1px 18px rgba(255, 255, 255, 0.46);
   }
 
+  .invitation-page:not(.cover-page) [data-paper] {
+    background:
+      radial-gradient(ellipse at center, color-mix(in srgb, var(--page-paper), transparent 26%) 0 36%, color-mix(in srgb, var(--page-paper), transparent 64%) 52%, transparent 76%),
+      radial-gradient(ellipse at 50% 42%, color-mix(in srgb, var(--page-wash), transparent 68%), transparent 70%);
+  }
+
   .family-invitation .monogram-seal {
     width: 64px;
   }
@@ -2310,32 +2356,46 @@ h3.font-light {
   }
 
   .family-blessing-names {
-    gap: 3px;
+    width: min(100%, 348px);
+    gap: 2px;
     margin: 1px 0 2px;
-    font-size: clamp(0.9rem, 3.9vw, 1rem);
-    line-height: 1.3;
+    font-size: clamp(0.72rem, 2.95vw, 0.88rem);
+    line-height: 1.18;
+  }
+
+  .family-blessing-names p,
+  .family-parents {
+    white-space: nowrap;
   }
 
   .family-blessing-names span {
-    font-size: 0.78rem;
+    font-size: 0.72rem;
+    line-height: 1;
   }
 
   .family-parents {
-    font-size: clamp(1.08rem, 4.7vw, 1.24rem);
+    font-size: clamp(0.96rem, 3.75vw, 1.12rem);
     line-height: 1.24;
   }
 
   .family-invitation h2 {
-  margin: 2px 0 1px;
-  font-size: clamp(1.95rem, 8vw, 2.35rem);
-  line-height: 1.1;
-  color: var(--page-deep);
-  text-align: center;
-}
+    margin: 2px 0 1px;
+    font-size: clamp(1.95rem, 8vw, 2.35rem);
+    line-height: 1.1;
+    color: var(--page-deep);
+    text-align: center;
+  }
 
   .family-couple-name {
     font-size: clamp(2.12rem, 9.2vw, 2.5rem);
-    line-height: 1;
+    line-height: 0.9;
+  }
+
+  .family-couple-name.italic {
+    font-family: var(--font-heading), Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0;
   }
 
   .family-with {
@@ -2457,13 +2517,40 @@ h3.font-light {
 
   .event-folio {
     display: grid;
-    gap: 14px;
+    gap: clamp(11px, 1.6svh, 15px);
     min-height: auto;
     align-content: center;
     justify-items: center;
-    max-width: 318px;
-    padding: 0 4px;
+    max-width: 326px;
+    padding: 10px 4px;
     text-align: center;
+  }
+
+  .event-folio::before,
+  .event-folio::after {
+    content: "";
+    position: relative;
+    display: block;
+    inset: auto;
+    width: min(230px, 64vw);
+    height: clamp(44px, 7svh, 62px);
+    border: 0;
+    opacity: 0.36;
+    background-image: var(--floral-corner-image);
+    background-repeat: no-repeat;
+    background-size: min(230px, 64vw) auto;
+    background-position: center 28%;
+    pointer-events: none;
+  }
+
+  .event-folio::before {
+    margin-bottom: -2px;
+    transform: rotate(180deg) scaleX(-1);
+  }
+
+  .event-folio::after {
+    margin-top: -2px;
+    transform: scaleX(-1);
   }
 
   .folio-leaf {
@@ -2503,18 +2590,17 @@ h3.font-light {
   }
 
   .event-sangeet .event-folio {
-    background: transparent;
+    background:
+      radial-gradient(ellipse at center, color-mix(in srgb, var(--page-paper), transparent 26%) 0 36%, color-mix(in srgb, var(--page-paper), transparent 64%) 52%, transparent 76%),
+      radial-gradient(ellipse at 50% 42%, color-mix(in srgb, var(--page-wash), transparent 68%), transparent 70%);
     border-color: transparent;
     box-shadow: none;
   }
 
-  .event-sangeet .event-folio::before,
-  .event-wedding-day .event-folio::before {
-    display: none;
-  }
-
   .event-wedding-day .event-folio {
-    background: transparent;
+    background:
+      radial-gradient(ellipse at center, color-mix(in srgb, var(--page-paper), transparent 26%) 0 36%, color-mix(in srgb, var(--page-paper), transparent 64%) 52%, transparent 76%),
+      radial-gradient(ellipse at 50% 42%, color-mix(in srgb, var(--page-wash), transparent 68%), transparent 70%);
     border-color: transparent;
     box-shadow: none;
   }
@@ -2532,10 +2618,10 @@ h3.font-light {
   }
 
   .event-folio h2 {
-    max-width: 316px;
-    font-size: clamp(2.18rem, 9.8vw, 2.54rem);
+    max-width: 320px;
+    font-size: clamp(2.22rem, 10vw, 2.62rem);
     font-weight: 700;
-    line-height: 1;
+    line-height: 0.98;
     color: var(--page-deep);
     text-wrap: balance;
     text-shadow: 0 1px 16px rgba(255, 255, 255, 0.48);
@@ -2563,7 +2649,7 @@ h3.font-light {
 
   .detail-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    width: min(100%, 312px);
+    width: min(100%, 316px);
     gap: 12px 16px;
     padding: 14px 0;
     border-top-color: color-mix(in srgb, var(--page-deep), transparent 82%);
@@ -2588,8 +2674,8 @@ h3.font-light {
   .ceremony-timeline strong,
   .venue-note strong {
     font-family: var(--font-royal), Georgia, serif;
-    font-size: 1.04rem;
-    font-weight: 600;
+    font-size: clamp(1.03rem, 4.15vw, 1.14rem);
+    font-weight: 700;
     line-height: 1.22;
     color: var(--page-ink);
   }

@@ -101,6 +101,13 @@ function paletteStyle(palette) {
   };
 }
 
+function pageStyle(palette) {
+  return {
+    ...paletteStyle(palette),
+    ...frameOrnamentStyle,
+  };
+}
+
 function Atmosphere({ motif = 'mandap', quiet = false }) {
   return (
     <div className={`page-atmosphere motif-${motif} ${quiet ? 'is-quiet' : ''}`} aria-hidden="true">
@@ -326,7 +333,7 @@ function CoverPage() {
   return (
     <section
       className="invitation-page cover-page"
-      style={paletteStyle(coverPalette)}
+      style={pageStyle(coverPalette)}
       aria-label="Cover"
     >
       <Atmosphere motif="mandap" />
@@ -365,7 +372,7 @@ function FamilyPage() {
   return (
     <section
       className="invitation-page family-page"
-      style={paletteStyle(familyPalette)}
+      style={pageStyle(familyPalette)}
       aria-label="Family and blessings"
     >
       <Atmosphere motif="mehendi" quiet />
@@ -436,7 +443,7 @@ function EventPage({ chapter, index }) {
   return (
     <section
       className={`invitation-page event-page event-${chapter.id} ${index % 2 ? 'is-reversed' : ''}`}
-      style={paletteStyle(chapter.palette)}
+      style={pageStyle(chapter.palette)}
       aria-label={chapter.title}
     >
       <Atmosphere motif={chapter.motif} />
@@ -507,7 +514,7 @@ function ClosingPage() {
   return (
     <section
       className="invitation-page closing-page"
-      style={paletteStyle(closingPalette)}
+      style={pageStyle(closingPalette)}
       aria-label="RSVP and closing"
     >
       <Atmosphere motif="wine" />
