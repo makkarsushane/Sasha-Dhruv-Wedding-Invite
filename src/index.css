@@ -103,6 +103,10 @@ body {
   line-height: 1.7;
   font-weight: 300;
   letter-spacing: 0;
+  /* Performance hints for mobile scroll */
+  -webkit-overflow-scrolling: touch;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 ::selection {
@@ -191,6 +195,14 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid rgba(196, 166, 90, 0.08);
 }
 
+@media (max-width: 767px) {
+  .glass {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(255, 253, 247, 0.9);
+  }
+}
+
 /* ─── Divider line ─── */
 .divider-line {
   width: 60px;
@@ -256,6 +268,18 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
 }
 
+[data-reveal],
+[data-paper],
+[data-art],
+[data-float],
+[data-canopy],
+[data-garlands],
+[data-ground] {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
 .invitation-experience {
   position: relative;
   min-height: 100vh;
@@ -285,6 +309,9 @@ h1, h2, h3, h4, h5, h6 {
     var(--page-bg);
   overflow: hidden;
   isolation: isolate;
+  /* Optimize for scroll performance */
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .invitation-page::before {
@@ -617,6 +644,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--page-accent);
   opacity: 0.18;
   filter: drop-shadow(0 24px 34px rgba(58, 38, 24, 0.08));
+  transform: translateZ(0);
 }
 
 .arch-fill {
@@ -676,7 +704,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .ceremony-vector {
+  pointer-events: none;
   color: var(--page-accent);
+  transform: translateZ(0);
 }
 
 .cover-page > .ceremony-vector {
@@ -726,6 +756,7 @@ h1, h2, h3, h4, h5, h6 {
     radial-gradient(circle at 18% 20%, color-mix(in srgb, var(--page-paper), transparent 28%), transparent 28%),
     radial-gradient(circle at 84% 18%, color-mix(in srgb, var(--page-accent), transparent 78%), transparent 26%),
     radial-gradient(circle at 52% 84%, color-mix(in srgb, var(--page-wash), transparent 36%), transparent 32%);
+  transform: translateZ(0);
 }
 
 .star-field::before,
