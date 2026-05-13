@@ -214,7 +214,6 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 100%;
 }
 
-.opening-loader,
 .invitation-experience {
   font-family: var(--font-body);
 }
@@ -224,22 +223,6 @@ h1, h2, h3, h4, h5, h6 {
   background: #f8efe3;
 }
 
-.opening-loader {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  cursor: pointer;
-  color: #b18a4d;
-  background:
-    linear-gradient(135deg, rgba(255, 249, 238, 0.96), rgba(240, 224, 202, 0.92)),
-    #fbf4e8;
-  isolation: isolate;
-}
-
-.loader-grain,
 .grain-layer {
   position: absolute;
   inset: 0;
@@ -249,42 +232,6 @@ h1, h2, h3, h4, h5, h6 {
   mix-blend-mode: multiply;
 }
 
-.loader-grain {
-  opacity: 0.09;
-  z-index: -1;
-}
-
-.loader-wash {
-  position: absolute;
-  width: min(118vw, 880px);
-  height: min(78vh, 640px);
-  pointer-events: none;
-  filter: blur(18px);
-  clip-path: polygon(5% 18%, 82% 5%, 96% 38%, 72% 87%, 18% 96%, 0 58%);
-  z-index: -1;
-}
-
-.loader-wash.wash-one {
-  top: 6%;
-  left: -18%;
-  background: linear-gradient(135deg, rgba(226, 191, 112, 0.32), rgba(255, 244, 210, 0.08));
-  animation: slow-drift 10s ease-in-out infinite alternate;
-}
-
-.loader-wash.wash-two {
-  right: -22%;
-  bottom: 4%;
-  background: linear-gradient(145deg, rgba(160, 173, 126, 0.22), rgba(255, 236, 222, 0.12));
-  animation: slow-drift 12s ease-in-out infinite alternate-reverse;
-}
-
-.loader-petal-field {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.loader-petal,
 .floating-petal {
   position: absolute;
   width: 9px;
@@ -295,54 +242,6 @@ h1, h2, h3, h4, h5, h6 {
   transform-origin: 50% 100%;
 }
 
-.loader-stage {
-  position: relative;
-  display: grid;
-  justify-items: center;
-  gap: 28px;
-  width: min(82vw, 430px);
-}
-
-.loader-emblem {
-  position: relative;
-  display: grid;
-  place-items: center;
-  width: 230px;
-  aspect-ratio: 1;
-}
-
-.loader-strokes {
-  position: absolute;
-  inset: 0;
-  color: #b18a4d;
-  overflow: visible;
-}
-
-.loader-monogram {
-  position: relative;
-  z-index: 2;
-  width: 48%;
-  aspect-ratio: 1;
-  object-fit: cover;
-  border-radius: 50%;
-  box-shadow: 0 18px 60px rgba(87, 62, 35, 0.2);
-}
-
-.loader-light {
-  position: absolute;
-  inset: 22%;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 246, 223, 0.95), rgba(205, 164, 83, 0.16) 48%, transparent 70%);
-  z-index: 1;
-}
-
-.loader-copy {
-  text-align: center;
-  color: #35291f;
-}
-
-.loader-copy p,
-.loader-copy span,
 .invitation-kicker,
 .page-number,
 .detail-item span,
@@ -355,21 +254,6 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0;
   color: var(--page-muted, #8d7660);
   font-weight: 400;
-}
-
-.loader-copy h1 {
-  margin-top: 8px;
-  font-family: var(--font-heading);
-  font-size: 2.45rem;
-  line-height: 1;
-  color: #2d241e;
-}
-
-.loader-copy span {
-  display: block;
-  margin-top: 10px;
-  text-transform: none;
-  color: #8f724a;
 }
 
 .invitation-experience {
@@ -1946,14 +1830,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (min-width: 700px) {
-  .loader-emblem {
-    width: 300px;
-  }
-
-  .loader-copy h1 {
-    font-size: 3.6rem;
-  }
-
   .monogram-seal {
     width: 132px;
   }
@@ -2099,24 +1975,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 699px) {
-  .loader-stage {
-    width: min(88vw, 430px);
-    gap: 30px;
-  }
-
-  .loader-emblem {
-    width: clamp(250px, 70vw, 300px);
-  }
-
-  .loader-copy h1 {
-    font-size: clamp(2.85rem, 11.5vw, 3.4rem);
-  }
-
-  .loader-copy p,
-  .loader-copy span {
-    font-size: 0.82rem;
-  }
-
   .invitation-page {
     height: 100svh;
     min-height: 100svh;
@@ -2752,7 +2610,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (pointer: coarse) {
-  .opening-loader,
   .invitation-experience,
   .invitation-experience * {
     touch-action: pan-y;
@@ -2764,7 +2621,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   /* Keep touch-device motion intact while avoiding expensive compositor work. */
-  .loader-wash,
   .wash-layer,
   .floating-line,
   .floating-petal,
@@ -2784,7 +2640,6 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-backdrop-filter: none;
   }
 
-  .loader-wash,
   .wash-layer,
   .event-sangeet .ornate-arch,
   .mughal-arch,
@@ -2792,7 +2647,6 @@ h1, h2, h3, h4, h5, h6 {
     filter: none !important;
   }
 
-  .loader-wash,
   .wash-layer {
     clip-path: none;
     border-radius: 46% 54% 52% 48%;
@@ -2806,7 +2660,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   /* Touch browser performance fixes */
-  .loader-grain,
   .grain-layer {
     background-image: none !important;
   }
