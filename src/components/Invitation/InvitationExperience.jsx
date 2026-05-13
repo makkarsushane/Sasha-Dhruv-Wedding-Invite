@@ -389,7 +389,7 @@ function FamilyPage() {
           <p>Smt. Suraj Kumari &amp; Late Shri Kanwar Bhan</p>
         </div>
         <p className="family-parents" data-reveal>
-          Mrs. Sonia Makkar &amp; Mr. Tushar Makkar
+          {families.brideParents.mother} &amp; {families.brideParents.father}
         </p>
         <p className="family-request" data-reveal>
           request the honour of your gracious presence at the
@@ -408,7 +408,7 @@ function FamilyPage() {
           Sasha
         </p>
         <p className="family-groom-line" data-reveal>
-          (d/o Mrs. Sonia Makkar &amp; Mr. Tushar Makkar)
+          (d/o {families.groomParents.mother} &amp; {families.groomParents.father})
         </p>
         <p className="family-date-line" data-reveal>
           On Monday, 29th June 2026
