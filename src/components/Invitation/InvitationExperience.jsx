@@ -25,12 +25,16 @@ const floralCanopyUrl = assetPath('/ornaments/floral-canopy.webp');
 const floralCornerUrl = assetPath('/ornaments/floral-corner.webp');
 const ornateArchUrl = assetPath('/ornaments/ornate-arch.webp');
 const lotusGroundUrl = assetPath('/ornaments/lotus-ground.webp');
+const textFloralSprigUrl = assetPath('/ornaments/text-floral-sprig.webp');
+const textLeafVineUrl = assetPath('/ornaments/text-leaf-vine.webp');
 
 const frameOrnamentStyle = {
   '--floral-canopy-image': `url("${floralCanopyUrl}")`,
   '--floral-corner-image': `url("${floralCornerUrl}")`,
   '--ornate-arch-image': `url("${ornateArchUrl}")`,
   '--lotus-ground-image': `url("${lotusGroundUrl}")`,
+  '--text-floral-sprig-image': `url("${textFloralSprigUrl}")`,
+  '--text-leaf-vine-image': `url("${textLeafVineUrl}")`,
 };
 
 const coverPalette = {

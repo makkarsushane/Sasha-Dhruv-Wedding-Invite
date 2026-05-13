@@ -139,6 +139,18 @@ export default function RootLayout({ children }) {
           as="image"
           href={`${basePath}/ornaments/lotus-ground.webp`}
         />
+
+        <link
+          rel="preload"
+          as="image"
+          href={`${basePath}/ornaments/text-floral-sprig.webp`}
+        />
+
+        <link
+          rel="preload"
+          as="image"
+          href={`${basePath}/ornaments/text-leaf-vine.webp`}
+        />
       </head>
 
       <body className={`${cormorant.variable} ${lora.variable}`}>
