@@ -29,6 +29,19 @@ const assets = [
   },
 ];
 
+const keyedAssets = [
+  {
+    input: 'scripts/assets/ornate-arch-source.png',
+    output: 'public/ornaments/ornate-arch.webp',
+    maxWidth: 980,
+  },
+  {
+    input: 'scripts/assets/lotus-ground-source.png',
+    output: 'public/ornaments/lotus-ground.webp',
+    maxWidth: 1500,
+  },
+];
+
 async function makeShadow(input, shadow) {
   const base = sharp(input).ensureAlpha();
   const { width, height } = await base.metadata();
@@ -96,4 +109,66 @@ async function bakeAsset(asset) {
     .toFile(asset.output);
 }
 
-await Promise.all(assets.map(bakeAsset));
+async function removeChromaKey(asset) {
+  const image = sharp(asset.input).ensureAlpha();
+  const { data, info } = await image.raw().toBuffer({ resolveWithObject: true });
+
+  for (let index = 0; index < data.length; index += 4) {
+    const red = data[index];
+    const green = data[index + 1];
+    const blue = data[index + 2];
+    const minRedBlue = Math.min(red, blue);
+    const redBlueDelta = Math.abs(red - blue);
+    const magentaDominance = minRedBlue - green;
+    const keyStrength = Math.min(1, Math.max(0, (magentaDominance - 58) / 118)) *
+      Math.min(1, Math.max(0, (120 - green) / 92)) *
+      Math.min(1, Math.max(0, (132 - redBlueDelta) / 118));
+
+    if (keyStrength >= 0.5 || (keyStrength > 0.28 && green < 72)) {
+      data[index] = 0;
+      data[index + 1] = 0;
+      data[index + 2] = 0;
+      data[index + 3] = 0;
+      continue;
+    }
+
+    if (keyStrength > 0) {
+      data[index + 3] = Math.round(data[index + 3] * (1 - keyStrength));
+
+      const despill = keyStrength * 0.5;
+      data[index] = Math.round(red - Math.max(0, red - green) * despill);
+      data[index + 2] = Math.round(blue - Math.max(0, blue - green) * despill);
+
+      if (data[index + 3] < 36) {
+        data[index] = 0;
+        data[index + 1] = 0;
+        data[index + 2] = 0;
+        data[index + 3] = 0;
+      }
+    }
+  }
+
+  await sharp(data, {
+    raw: {
+      width: info.width,
+      height: info.height,
+      channels: info.channels,
+    },
+  })
+    .resize({
+      width: asset.maxWidth,
+      withoutEnlargement: true,
+    })
+    .webp({
+      quality: 84,
+      alphaQuality: 88,
+      effort: 6,
+      smartSubsample: true,
+    })
+    .toFile(asset.output);
+}
+
+await Promise.all([
+  ...assets.map(bakeAsset),
+  ...keyedAssets.map(removeChromaKey),
+]);

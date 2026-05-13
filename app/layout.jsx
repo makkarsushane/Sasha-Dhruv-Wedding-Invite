@@ -33,6 +33,8 @@ export default function RootLayout({ children }) {
         <link rel="preload" as="image" href={`${basePath}/monogram.jpg`} fetchPriority="high" />
         <link rel="preload" as="image" href={`${basePath}/ornaments/floral-canopy.webp`} fetchPriority="high" />
         <link rel="preload" as="image" href={`${basePath}/ornaments/floral-corner.webp`} />
+        <link rel="preload" as="image" href={`${basePath}/ornaments/ornate-arch.webp`} fetchPriority="high" />
+        <link rel="preload" as="image" href={`${basePath}/ornaments/lotus-ground.webp`} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link

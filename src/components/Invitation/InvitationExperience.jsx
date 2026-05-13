@@ -23,10 +23,14 @@ ScrollTrigger.config({
 const monogramUrl = assetPath('/monogram.jpg');
 const floralCanopyUrl = assetPath('/ornaments/floral-canopy.webp');
 const floralCornerUrl = assetPath('/ornaments/floral-corner.webp');
+const ornateArchUrl = assetPath('/ornaments/ornate-arch.webp');
+const lotusGroundUrl = assetPath('/ornaments/lotus-ground.webp');
 
 const frameOrnamentStyle = {
   '--floral-canopy-image': `url("${floralCanopyUrl}")`,
   '--floral-corner-image': `url("${floralCornerUrl}")`,
+  '--ornate-arch-image': `url("${ornateArchUrl}")`,
+  '--lotus-ground-image': `url("${lotusGroundUrl}")`,
 };
 
 const coverPalette = {
@@ -148,40 +152,7 @@ function InvitationFrame({ variant = 'classic' }) {
       <div className="top-miniature-border" />
       <div className="side-miniature-border side-left" />
       <div className="side-miniature-border side-right" />
-      <svg className="palace-canopy" data-canopy viewBox="0 0 1000 650" fill="none">
-        <path
-          className="canopy-fill"
-          d="M24 514c46-108 129-156 223-138 22-82 77-124 148-112C424 152 500 58 500 58s76 94 105 206c71-12 126 30 148 112 94-18 177 30 223 138v91H24v-91Z"
-        />
-        <path
-          className="canopy-band"
-          pathLength="1"
-          d="M-470 652c154-92 318-138 494-138 46-108 129-156 223-138 22-82 77-124 148-112C424 152 500 58 500 58s76 94 105 206c71-12 126 30 148 112 94-18 177 30 223 138 176 0 340 46 494 138"
-        />
-        <path
-          className="canopy-band is-inner"
-          pathLength="1"
-          d="M92 541c38-78 100-112 171-96 26-75 84-111 147-89C431 237 500 126 500 126s69 111 90 230c63-22 121 14 147 89 71-16 133 18 171 96"
-        />
-        <path
-          className="canopy-band is-fine"
-          pathLength="1"
-          d="M151 562c28-48 72-67 124-54 33-75 88-102 143-72 22-116 82-195 82-195s60 79 82 195c55-30 110-3 143 72 52-13 96 6 124 54"
-        />
-        <path
-          className="canopy-vine"
-          pathLength="1"
-          d="M104 214c72-46 145-49 219-9M676 205c74-40 147-37 220 9"
-        />
-        <path
-          className="canopy-vine"
-          pathLength="1"
-          d="M173 187c-15 18-23 36-23 54 23-5 41-16 54-34M813 187c15 18 23 36 23 54-23-5-41-16-54-34"
-        />
-        {[236, 330, 415, 500, 585, 670, 764].map((cx) => (
-          <circle key={cx} className="canopy-dot" cx={cx} cy="585" r="4" />
-        ))}
-      </svg>
+      <div className="ornate-arch" data-canopy />
       <div className="hanging-garlands" data-garlands>
         {[0, 1, 2, 3, 4].map((item) => (
           <span key={item} className={`garland garland-${item + 1}`}>
@@ -191,16 +162,7 @@ function InvitationFrame({ variant = 'classic' }) {
           </span>
         ))}
       </div>
-      <div className="floral-ground ground-left" data-ground>
-        <span />
-        <span />
-        <span />
-      </div>
-      <div className="floral-ground ground-right" data-ground>
-        <span />
-        <span />
-        <span />
-      </div>
+      <div className="lotus-ground" data-ground />
     </div>
   );
 }
@@ -623,7 +585,6 @@ export default function InvitationExperience() {
         const marquee = page.querySelector('[data-marquee] .chapter-marquee-track');
         const frame = page.querySelector('[data-frame]');
         const canopy = page.querySelector('[data-canopy]');
-        const canopyLines = page.querySelectorAll('.canopy-band, .canopy-vine');
         const garlands = page.querySelectorAll('[data-garlands] .garland');
         const grounds = page.querySelectorAll('[data-ground]');
         const art = page.querySelector('[data-art]');
@@ -666,15 +627,6 @@ export default function InvitationExperience() {
             { y: -58, scale: 1.08, transformOrigin: '50% 0%', autoAlpha: 0.1 },
             { y: 0, scale: 1, autoAlpha: 1, duration: 1.55, ease: 'power3.out' },
             0.1
-          );
-        }
-
-        if (canopyLines.length) {
-          tl.fromTo(
-            canopyLines,
-            { strokeDasharray: 1, strokeDashoffset: 1 },
-            { strokeDashoffset: 0, duration: 1.45, stagger: 0.08, ease: 'power2.out' },
-            0.2
           );
         }
 
