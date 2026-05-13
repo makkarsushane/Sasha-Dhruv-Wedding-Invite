@@ -429,23 +429,6 @@ function Detail({ label, value }) {
   );
 }
 
-function LeafSprig({ className = '' }) {
-  return (
-    <svg className={`folio-leaf ${className}`} viewBox="0 0 220 92" fill="none" aria-hidden="true">
-      <path
-        className="leaf-stem"
-        d="M18 74c31-32 67-51 108-57 31-4 58 2 76 17"
-      />
-      <path className="leaf-line" d="M51 53c-3-19 4-33 22-43 5 20-2 34-22 43Z" />
-      <path className="leaf-line" d="M82 37c4-21 17-32 39-34-3 21-16 33-39 34Z" />
-      <path className="leaf-line" d="M112 29c11-18 27-25 48-20-10 18-26 25-48 20Z" />
-      <path className="leaf-line" d="M139 31c18-11 36-10 53 4-18 11-36 10-53-4Z" />
-      <path className="leaf-dot" d="M28 69a5 5 0 1 0 10 0 5 5 0 0 0-10 0Z" />
-      <path className="leaf-dot" d="M190 35a4 4 0 1 0 8 0 4 4 0 0 0-8 0Z" />
-    </svg>
-  );
-}
-
 function EventPage({ chapter, index }) {
   const isWeddingDay = chapter.id === 'wedding-day';
   const ribbonText = `${chapter.title} / ${chapter.subtitle}`;
@@ -471,7 +454,6 @@ function EventPage({ chapter, index }) {
 
       <div className="event-shell">
         <div className="event-art" data-art>
-          <span className="event-sequence">{chapter.sequence}</span>
           <div className={`event-motif motif-card-${chapter.motif}`} data-float>
             <span />
           </div>
@@ -480,18 +462,7 @@ function EventPage({ chapter, index }) {
         </div>
 
         <article className="event-folio" data-paper>
-          <>
-            <LeafSprig className="folio-leaf-top" />
-            <LeafSprig className="folio-leaf-bottom" />
-          </>
-
           <h2 data-reveal>{chapter.title}</h2>
-          <p className="event-subtitle-card" data-reveal>
-            {chapter.subtitle}
-          </p>
-          <p className="event-description" data-reveal>
-            {chapter.description}
-          </p>
 
           <div className="detail-grid" data-reveal>
             <Detail label="Date" value={chapter.date} />
