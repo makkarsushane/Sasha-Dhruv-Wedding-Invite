@@ -2199,9 +2199,11 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .event-page .event-shell {
+    width: min(100%, 324px);
     min-height: calc(100svh - 44px);
+    padding: clamp(76px, 12svh, 112px) 0 clamp(66px, 10svh, 96px);
     justify-content: center;
-    gap: 6px;
+    gap: 2px;
   }
 
   .blessing-panel,
@@ -2360,8 +2362,8 @@ h1, h2, h3, h4, h5, h6 {
 
   .event-art {
     order: 0;
-    min-height: 58px;
-    margin-bottom: -2px;
+    min-height: 44px;
+    margin-bottom: -8px;
     display: grid;
     place-items: center;
     align-content: center;
@@ -2399,9 +2401,9 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     left: auto;
     top: auto;
-    width: 58px;
+    width: 50px;
     margin: 0 auto -3px;
-    opacity: 0.34;
+    opacity: 0.28;
     filter: none;
   }
 
@@ -2414,11 +2416,12 @@ h1, h2, h3, h4, h5, h6 {
 
   .event-folio {
     display: grid;
-    gap: 12px;
-    min-height: min(70svh, 620px);
+    gap: 10px;
+    min-height: auto;
     align-content: center;
     justify-items: center;
-    padding: 30px 10px 26px;
+    max-width: 324px;
+    padding: 8px 6px 0;
     text-align: center;
   }
 
@@ -2464,8 +2467,15 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: none;
   }
 
-  .event-sangeet .event-folio::before {
+  .event-sangeet .event-folio::before,
+  .event-wedding-day .event-folio::before {
     display: none;
+  }
+
+  .event-wedding-day .event-folio {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
   }
 
   .event-sangeet .event-subtitle-card {
@@ -2475,9 +2485,14 @@ h1, h2, h3, h4, h5, h6 {
 
   .event-sangeet .event-folio h2 {
     max-width: 310px;
-    font-size: 2.02rem;
+    font-size: 1.98rem;
     line-height: 0.98;
     color: var(--page-deep);
+  }
+
+  .event-folio h2 {
+    max-width: 312px;
+    text-wrap: balance;
   }
 
   .event-sangeet .event-folio .event-description,
@@ -2495,13 +2510,15 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .event-wedding-day .event-folio h2 {
-    font-size: 2.28rem;
+    max-width: 314px;
+    font-size: 2.34rem;
+    line-height: 0.96;
   }
 
   .detail-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    width: min(100%, 330px);
-    gap: 10px 12px;
+    width: min(100%, 314px);
+    gap: 10px 14px;
     padding: 12px 0;
   }
 
@@ -2514,11 +2531,14 @@ h1, h2, h3, h4, h5, h6 {
   .detail-item strong,
   .ceremony-timeline strong,
   .venue-note strong {
-    font-size: 1rem;
-    line-height: 1.12;
+    font-family: var(--font-body);
+    font-size: 1.02rem;
+    font-weight: 600;
+    line-height: 1.18;
   }
 
   .ceremony-timeline {
+    width: min(100%, 314px);
     gap: 7px;
     padding-left: 0;
     border-left: 0;
@@ -2527,17 +2547,18 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .ceremony-timeline div {
-    grid-template-columns: 1fr auto;
-    align-items: baseline;
-    gap: 10px;
-    text-align: left;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 2px;
+    text-align: center;
   }
 
   .ceremony-timeline span {
-    text-align: left;
+    text-align: center;
   }
 
   .venue-note {
+    width: min(100%, 314px);
     background: transparent;
     border-color: transparent;
     box-shadow: none;
@@ -2548,6 +2569,7 @@ h1, h2, h3, h4, h5, h6 {
 
   .venue-note p,
   .event-note {
+    max-width: 314px;
     font-size: 0.86rem;
     line-height: 1.42;
   }
@@ -2614,8 +2636,8 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .event-folio {
-    min-height: min(69svh, 590px);
-    padding: 28px 16px 24px;
+    min-height: auto;
+    padding: 8px 4px 0;
   }
 }
 
