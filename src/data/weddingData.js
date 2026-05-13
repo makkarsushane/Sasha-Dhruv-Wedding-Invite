@@ -1,21 +1,21 @@
 export const couple = {
-  bride: 'Sasha',
-  groom: 'Dhruv',
-  brideFull: 'Sasha Makkar',
-  groomFull: 'Dhruv Kundu',
+  bride: 'Dhruv',
+  groom: 'Sasha',
+  brideFull: 'Dhruv Kundu',
+  groomFull: 'Sasha Makkar',
   weddingDate: '2026-06-29',
   tagline: 'Two souls, one journey',
 };
 
 export const families = {
   brideParents: {
+    mother: 'Mrs. Vandna Kundu',
+    father: 'Mr. Sanjay Kundu',
+  },
+  groomParents: {
     mother: 'Mrs. Sonia Makkar',
     father: 'Mr. Tushar Makkar',
     address: 'A-31, IDC Apartments, Plot 8C, Sector-11, Dwarka, New Delhi-110075',
-  },
-  groomParents: {
-    mother: 'Mrs. Vandna Kundu',
-    father: 'Mr. Sanjay Kundu',
   },
   grandparents: [
     { names: 'Smt. Mohini Devi & Late Shri Girdhari Lal Makkar' },

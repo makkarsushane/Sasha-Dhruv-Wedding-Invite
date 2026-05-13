@@ -344,9 +344,9 @@ function CoverPage() {
           A handcrafted wedding invitation
         </p>
         <h1 className="cover-title" data-reveal>
-          <span>{couple.bride}</span>
+          <span>Dhruv</span>
           <em>weds</em>
-          <span>{couple.groom}</span>
+          <span>Sasha</span>
         </h1>
         <p className="cover-date" data-reveal>
           28 - 29 June 2026 / New Delhi
@@ -396,19 +396,19 @@ function FamilyPage() {
         </p>
         <h2 data-reveal>Wedding Ceremony</h2>
         <p className="family-small" data-reveal>
-          of their daughter
+          of their son
         </p>
         <p className="family-couple-name italic" data-reveal>
-          Sasha
+          Dhruv
         </p>
         <p className="family-with italic" data-reveal>
           with
         </p>
         <p className="family-couple-name italic" data-reveal>
-          Dhruv
+          Sasha
         </p>
         <p className="family-groom-line" data-reveal>
-          (s/o Mrs. Vandna Kundu &amp; Mr. Sanjay Kundu)
+          (d/o Mrs. Sonia Makkar &amp; Mr. Tushar Makkar)
         </p>
         <p className="family-date-line" data-reveal>
           On Monday, 29th June 2026

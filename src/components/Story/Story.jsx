@@ -124,9 +124,9 @@ export default function Story() {
           transition={{ duration: 1, delay: 1.3, ease: [0.22, 1, 0.36, 1] }}
         >
           <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-charcoal font-light">
-            Sasha
-            <span className="text-gold mx-3 md:mx-4 italic text-3xl md:text-4xl">weds</span>
             Dhruv
+            <span className="text-gold mx-3 md:mx-4 italic text-3xl md:text-4xl">weds</span>
+            Sasha
           </h2>
         </motion.div>
       </div>
