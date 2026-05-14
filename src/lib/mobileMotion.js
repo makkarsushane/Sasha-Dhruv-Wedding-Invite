@@ -10,6 +10,8 @@ export function isAndroidDevice() {
   const userAgentDataPlatform = navigator.userAgentData?.platform || '';
   const userAgent = navigator.userAgent || '';
   const platform = navigator.platform || '';
+  const marker = `${userAgent} ${platform} ${userAgentDataPlatform}`;
+  const isIos = /iphone|ipad|ipod/i.test(marker);
 
-  return /android/i.test(`${userAgent} ${platform} ${userAgentDataPlatform}`);
+  return /android/i.test(marker) || (/linux/i.test(marker) && /mobile/i.test(marker) && !isIos);
 }

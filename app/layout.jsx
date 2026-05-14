@@ -99,8 +99,31 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                try {
+                  var dataPlatform = navigator.userAgentData && navigator.userAgentData.platform || '';
+                  var marker = [
+                    navigator.userAgent || '',
+                    navigator.platform || '',
+                    dataPlatform
+                  ].join(' ');
+                  var isIos = /iphone|ipad|ipod/i.test(marker);
+                  var isAndroid = /android/i.test(marker) || (/linux/i.test(marker) && /mobile/i.test(marker) && !isIos);
+
+                  if (isAndroid) {
+                    document.documentElement.classList.add('is-android');
+                  }
+                } catch (error) {}
+              }());
+            `,
+          }}
+        />
+
         <link
           rel="icon"
           type="image/jpeg"

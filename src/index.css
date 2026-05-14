@@ -2386,8 +2386,8 @@ h3.font-light {
       radial-gradient(ellipse 82% 70% at 50% 42%, color-mix(in srgb, var(--page-wash), transparent 56%) 0 34%, transparent 70%);
   }
 
-  .invitation-experience.is-android .invitation-page:not(.cover-page) [data-paper] {
-    background: transparent;
+  .is-android .invitation-page:not(.cover-page) [data-paper] {
+    background: transparent !important;
   }
 
   .family-invitation .monogram-seal {
@@ -2606,89 +2606,89 @@ h3.font-light {
     transform: translate(-50%, -50%);
   }
 
-  .invitation-experience.is-android .event-page .event-folio::after {
+  .is-android .event-page .event-folio::after {
     display: none;
   }
 
-  .invitation-experience.is-android .wash-layer,
-  .invitation-experience.is-android .event-page .event-folio::after {
+  .is-android .wash-layer,
+  .is-android .event-page .event-folio::after {
     display: none !important;
   }
 
-  .invitation-experience.is-android .family-invitation,
-  .invitation-experience.is-android .blessing-panel,
-  .invitation-experience.is-android .event-folio,
-  .invitation-experience.is-android .closing-frame,
-  .invitation-experience.is-android .cover-title,
-  .invitation-experience.is-android .event-folio h2,
-  .invitation-experience.is-android .detail-item strong,
-  .invitation-experience.is-android .ceremony-timeline strong,
-  .invitation-experience.is-android .venue-note strong,
-  .invitation-experience.is-android .event-note,
-  .invitation-experience.is-android .closing-frame h2,
-  .invitation-experience.is-android .closing-shlok,
-  .invitation-experience.is-android .closing-love {
+  .is-android .family-invitation,
+  .is-android .blessing-panel,
+  .is-android .event-folio,
+  .is-android .closing-frame,
+  .is-android .cover-title,
+  .is-android .event-folio h2,
+  .is-android .detail-item strong,
+  .is-android .ceremony-timeline strong,
+  .is-android .venue-note strong,
+  .is-android .event-note,
+  .is-android .closing-frame h2,
+  .is-android .closing-shlok,
+  .is-android .closing-love {
     text-shadow: none !important;
   }
 
-  .invitation-experience.is-android .family-invitation,
-  .invitation-experience.is-android .blessing-panel,
-  .invitation-experience.is-android .event-folio,
-  .invitation-experience.is-android .closing-frame,
-  .invitation-experience.is-android .glass {
+  .is-android .family-invitation,
+  .is-android .blessing-panel,
+  .is-android .event-folio,
+  .is-android .closing-frame,
+  .is-android .glass {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     filter: none !important;
   }
 
-  .invitation-experience.is-android .monogram-glow,
-  .invitation-experience.is-android .mughal-arch,
-  .invitation-experience.is-android .ceremony-vector,
-  .invitation-experience.is-android .event-art .ceremony-vector,
-  .invitation-experience.is-android .wash-layer {
+  .is-android .monogram-glow,
+  .is-android .mughal-arch,
+  .is-android .ceremony-vector,
+  .is-android .event-art .ceremony-vector,
+  .is-android .wash-layer {
     filter: none !important;
   }
 
-  .invitation-experience.is-android .star,
-  .invitation-experience.is-android .monogram-seal img {
+  .is-android .star,
+  .is-android .monogram-seal img {
     box-shadow: none !important;
   }
 
-  .invitation-experience.is-android .ornate-arch {
+  .is-android .ornate-arch {
     background-image: var(--ornate-arch-image);
     background-position: top center;
     background-size: contain;
     background-repeat: no-repeat;
   }
 
-  .invitation-experience.is-android .event-text-ornament {
+  .is-android .event-text-ornament {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
   }
 
-  .invitation-experience.is-android .event-text-ornament-top {
+  .is-android .event-text-ornament-top {
     background-image: var(--text-floral-sprig-image);
   }
 
-  .invitation-experience.is-android .event-text-ornament-bottom {
+  .is-android .event-text-ornament-bottom {
     background-image: var(--text-leaf-vine-image);
   }
 
-  .invitation-experience.is-android .floral-spray,
-  .invitation-experience.is-android .garland,
-  .invitation-experience.is-android .top-miniature-border,
-  .invitation-experience.is-android .side-miniature-border,
-  .invitation-experience.is-android .floating-line,
-  .invitation-experience.is-android .floating-petal,
-  .invitation-experience.is-android .seal-ring,
-  .invitation-experience.is-android .arch-dot,
-  .invitation-experience.is-android .vector-dot,
-  .invitation-experience.is-android .star,
-  .invitation-experience.is-android .star-field::before,
-  .invitation-experience.is-android .star-field::after,
-  .invitation-experience.is-android .jaali-layer,
-  .invitation-experience.is-android .event-art .ceremony-vector {
+  .is-android .floral-spray,
+  .is-android .garland,
+  .is-android .top-miniature-border,
+  .is-android .side-miniature-border,
+  .is-android .floating-line,
+  .is-android .floating-petal,
+  .is-android .seal-ring,
+  .is-android .arch-dot,
+  .is-android .vector-dot,
+  .is-android .star,
+  .is-android .star-field::before,
+  .is-android .star-field::after,
+  .is-android .jaali-layer,
+  .is-android .event-art .ceremony-vector {
     animation: none !important;
   }
 
@@ -3109,4 +3109,46 @@ h3.font-light {
     line-height: 1.6;
   }
 
+}
+
+.is-android .invitation-page:not(.cover-page) [data-paper] {
+  background: transparent !important;
+}
+
+.is-android .wash-layer,
+.is-android .event-page .event-folio::after {
+  display: none !important;
+}
+
+.is-android .family-invitation,
+.is-android .blessing-panel,
+.is-android .event-folio,
+.is-android .closing-frame,
+.is-android .glass {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  filter: none !important;
+}
+
+@media (pointer: coarse) and (hover: none) {
+  @supports not (-webkit-touch-callout: none) {
+    .invitation-page:not(.cover-page) [data-paper] {
+      background: transparent !important;
+    }
+
+    .wash-layer,
+    .event-page .event-folio::after {
+      display: none !important;
+    }
+
+    .family-invitation,
+    .blessing-panel,
+    .event-folio,
+    .closing-frame,
+    .glass {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      filter: none !important;
+    }
+  }
 }
