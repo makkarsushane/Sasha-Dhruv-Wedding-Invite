@@ -122,7 +122,7 @@ export default function Hero() {
 
         {/* Date */}
         <motion.p
-          className="mt-10 md:mt-14 text-xs md:text-sm tracking-[0.35em] uppercase text-stone-light font-body font-light"
+          className="mt-10 md:mt-14 text-sm md:text-base tracking-[0.35em] uppercase text-stone-light font-body font-light"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.9 }}
