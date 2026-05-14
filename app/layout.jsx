@@ -117,6 +117,39 @@ export default function RootLayout({ children }) {
 
                   if (isAndroid) {
                     document.documentElement.classList.add('is-android');
+
+                    var androidStyle = document.createElement('style');
+                    androidStyle.id = 'android-no-text-wash';
+                    androidStyle.textContent = [
+                      '.invitation-page:not(.cover-page) [data-paper],',
+                      '.invitation-page.event-page .event-folio[data-paper],',
+                      '.event-wedding-day .event-folio,',
+                      '.event-sangeet .event-folio,',
+                      '.family-invitation,',
+                      '.blessing-panel,',
+                      '.closing-frame {',
+                      '  background: transparent !important;',
+                      '  background-image: none !important;',
+                      '  box-shadow: none !important;',
+                      '  backdrop-filter: none !important;',
+                      '  -webkit-backdrop-filter: none !important;',
+                      '  filter: none !important;',
+                      '}',
+                      '.wash-layer,',
+                      '.event-page .event-folio::after,',
+                      '.event-folio::before,',
+                      '.family-invitation::before,',
+                      '.blessing-panel::before,',
+                      '.closing-frame::before {',
+                      '  content: none !important;',
+                      '  display: none !important;',
+                      '  background: none !important;',
+                      '  background-image: none !important;',
+                      '  box-shadow: none !important;',
+                      '  filter: none !important;',
+                      '}'
+                    ].join('\\n');
+                    document.head.appendChild(androidStyle);
                   }
                 } catch (error) {}
               }());

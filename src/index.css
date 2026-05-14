@@ -3113,10 +3113,16 @@ h3.font-light {
 
 .is-android .invitation-page:not(.cover-page) [data-paper] {
   background: transparent !important;
+  background-image: none !important;
 }
 
 .is-android .wash-layer,
-.is-android .event-page .event-folio::after {
+.is-android .event-page .event-folio::after,
+.is-android .event-folio::before,
+.is-android .family-invitation::before,
+.is-android .blessing-panel::before,
+.is-android .closing-frame::before {
+  content: none !important;
   display: none !important;
 }
 
@@ -3125,6 +3131,9 @@ h3.font-light {
 .is-android .event-folio,
 .is-android .closing-frame,
 .is-android .glass {
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   filter: none !important;
@@ -3134,10 +3143,16 @@ h3.font-light {
   @supports not (-webkit-touch-callout: none) {
     .invitation-page:not(.cover-page) [data-paper] {
       background: transparent !important;
+      background-image: none !important;
     }
 
     .wash-layer,
-    .event-page .event-folio::after {
+    .event-page .event-folio::after,
+    .event-folio::before,
+    .family-invitation::before,
+    .blessing-panel::before,
+    .closing-frame::before {
+      content: none !important;
       display: none !important;
     }
 
@@ -3146,6 +3161,9 @@ h3.font-light {
     .event-folio,
     .closing-frame,
     .glass {
+      background: transparent !important;
+      background-image: none !important;
+      box-shadow: none !important;
       backdrop-filter: none !important;
       -webkit-backdrop-filter: none !important;
       filter: none !important;
