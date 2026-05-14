@@ -563,6 +563,7 @@ export default function InvitationExperience() {
 
       const pages = gsap.utils.toArray('.invitation-page');
       const useNativeTouchScroll = isTouchScrollDevice();
+      const useStaticDecorOnAndroid = isAndroid && useNativeTouchScroll;
 
       pages.forEach((page, pageIndex) => {
         const reveals = page.querySelectorAll('[data-reveal]');
@@ -577,20 +578,22 @@ export default function InvitationExperience() {
         const art = page.querySelector('[data-art]');
         const isEventPage = page.classList.contains('event-page');
 
-        gsap.fromTo(
-          page,
-          { scale: 0.985 },
-          {
-            scale: 1,
-            ease: 'power1.out',
-            scrollTrigger: {
-              trigger: page,
-              start: 'top 92%',
-              end: 'top 12%',
-              scrub: 0.9,
+        if (!useStaticDecorOnAndroid) {
+          gsap.fromTo(
+            page,
+            { scale: 0.985 },
+            {
+              scale: 1,
+              ease: 'power1.out',
+              scrollTrigger: {
+                trigger: page,
+                start: 'top 92%',
+                end: 'top 12%',
+                scrub: 0.9,
+              },
             },
-          },
-        );
+          );
+        }
 
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -600,7 +603,9 @@ export default function InvitationExperience() {
           }
         });
 
-        if (frame) {
+        if (frame && useStaticDecorOnAndroid) {
+          tl.set(frame, { autoAlpha: 1 }, 0);
+        } else if (frame) {
           tl.fromTo(
             frame,
             { autoAlpha: 0.18 },
@@ -609,7 +614,9 @@ export default function InvitationExperience() {
           );
         }
 
-        if (canopy) {
+        if (canopy && useStaticDecorOnAndroid) {
+          tl.set(canopy, { autoAlpha: 1 }, 0);
+        } else if (canopy) {
           tl.fromTo(
             canopy,
             { y: -58, scale: 1.08, transformOrigin: '50% 0%', autoAlpha: 0.1 },
@@ -618,7 +625,9 @@ export default function InvitationExperience() {
           );
         }
 
-        if (garlands.length) {
+        if (garlands.length && useStaticDecorOnAndroid) {
+          tl.set(garlands, { autoAlpha: 1 }, 0);
+        } else if (garlands.length) {
           tl.fromTo(
             garlands,
             { y: -42, autoAlpha: 0, scaleY: 0.74, transformOrigin: 'top center' },
@@ -627,7 +636,9 @@ export default function InvitationExperience() {
           );
         }
 
-        if (grounds.length) {
+        if (grounds.length && useStaticDecorOnAndroid) {
+          tl.set(grounds, { autoAlpha: 1 }, 0);
+        } else if (grounds.length) {
           tl.fromTo(
             grounds,
             { y: 44, autoAlpha: 0, scale: 0.9 },
@@ -636,7 +647,9 @@ export default function InvitationExperience() {
           );
         }
 
-        if (art) {
+        if (art && useStaticDecorOnAndroid) {
+          tl.set(art, { autoAlpha: 1 }, 0);
+        } else if (art) {
           tl.fromTo(
             art,
             { y: 70, rotate: pageIndex % 2 ? -1.8 : 1.8, scale: 0.94, autoAlpha: 0 },
@@ -645,7 +658,14 @@ export default function InvitationExperience() {
           );
         }
 
-        if (paper && isEventPage && useNativeTouchScroll) {
+        if (paper && useStaticDecorOnAndroid) {
+          tl.fromTo(
+            paper,
+            { autoAlpha: 0 },
+            { autoAlpha: 1, duration: 0.75, ease: 'power2.out' },
+            0.6
+          );
+        } else if (paper && isEventPage && useNativeTouchScroll) {
           tl.fromTo(
             paper,
             { autoAlpha: 0, scale: 0.985 },
@@ -661,7 +681,14 @@ export default function InvitationExperience() {
           );
         }
 
-        if (ornaments.length) {
+        if (ornaments.length && useStaticDecorOnAndroid) {
+          tl.fromTo(
+            ornaments,
+            { autoAlpha: 0 },
+            { autoAlpha: 1, duration: 0.65, stagger: 0.08, ease: 'power2.out' },
+            0.72
+          );
+        } else if (ornaments.length) {
           tl.fromTo(
             ornaments,
             { autoAlpha: 0, clipPath: 'inset(0 50% 0 50%)' },
@@ -715,7 +742,7 @@ export default function InvitationExperience() {
 
       ScrollTrigger.refresh();
     },
-    { scope: root, dependencies: [reducedMotion] },
+    { scope: root, dependencies: [isAndroid, reducedMotion] },
   );
 
   return (

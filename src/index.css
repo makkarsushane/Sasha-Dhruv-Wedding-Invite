@@ -2675,6 +2675,23 @@ h3.font-light {
     background-image: var(--text-leaf-vine-image);
   }
 
+  .invitation-experience.is-android .floral-spray,
+  .invitation-experience.is-android .garland,
+  .invitation-experience.is-android .top-miniature-border,
+  .invitation-experience.is-android .side-miniature-border,
+  .invitation-experience.is-android .floating-line,
+  .invitation-experience.is-android .floating-petal,
+  .invitation-experience.is-android .seal-ring,
+  .invitation-experience.is-android .arch-dot,
+  .invitation-experience.is-android .vector-dot,
+  .invitation-experience.is-android .star,
+  .invitation-experience.is-android .star-field::before,
+  .invitation-experience.is-android .star-field::after,
+  .invitation-experience.is-android .jaali-layer,
+  .invitation-experience.is-android .event-art .ceremony-vector {
+    animation: none !important;
+  }
+
   .event-folio > * {
     position: relative;
     z-index: 1;
