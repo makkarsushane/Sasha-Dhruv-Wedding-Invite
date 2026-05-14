@@ -13,6 +13,7 @@ import {
 import { useSmoothScroll } from '../../hooks/useSmoothScroll';
 import { assetPath } from '../../lib/assetPath';
 import { isTouchScrollDevice } from '../../lib/mobileMotion';
+import PdfExportButton from '../PdfExportButton/PdfExportButton';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 ScrollTrigger.config({
@@ -339,6 +340,7 @@ function CoverPage() {
       className="invitation-page cover-page"
       style={pageStyle(coverPalette)}
       aria-label="Cover"
+      data-pdf-page
     >
       <Atmosphere motif="mandap" />
       <InvitationFrame variant="cover" />
@@ -375,6 +377,7 @@ function FamilyPage() {
       className="invitation-page family-page"
       style={pageStyle(familyPalette)}
       aria-label="Family and blessings"
+      data-pdf-page
     >
       <Atmosphere motif="mehendi" quiet />
       <InvitationFrame variant="family" />
@@ -443,9 +446,10 @@ function EventPage({ chapter, index }) {
 
   return (
     <section
-      className={`invitation-page event-page event-${chapter.id} ${index % 2 ? 'is-reversed' : ''}`}
+      className={`invitation-page event-page event-${chapter.id} ${index % 2 ? 'is-reversed' : ''} ${isWeddingDay ? 'wedding-day-page page--ceremony' : ''}`}
       style={pageStyle(chapter.palette)}
       aria-label={chapter.title}
+      data-pdf-page
     >
       <Atmosphere motif={chapter.motif} />
       {chapter.motif === 'night' && <StarField />}
@@ -523,6 +527,7 @@ function ClosingPage() {
       className="invitation-page closing-page"
       style={pageStyle(closingPalette)}
       aria-label="RSVP and closing"
+      data-pdf-page
     >
       <Atmosphere motif="wine" />
       <InvitationFrame variant="closing" />
@@ -725,6 +730,7 @@ export default function InvitationExperience() {
         <EventPage key={chapter.id} chapter={chapter} index={index} />
       ))}
       <ClosingPage />
+      <PdfExportButton />
     </main>
   );
 }

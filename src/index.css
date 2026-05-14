@@ -2986,3 +2986,75 @@ h3.font-light {
   }
 
 }
+
+/* ================================================== */
+/* WEDDING CEREMONY PAGE FIX                          */
+/* ================================================== */
+.page--ceremony {
+  --ceremony-shift-y: -18px;
+  --ceremony-title-scale-y: 0.92;
+  --ceremony-gap-scale: 0.82;
+}
+
+.page--ceremony .page-content,
+.page--ceremony .event-content,
+.page--ceremony .event-folio,
+.page--ceremony .ceremony-content {
+  transform: translateY(var(--ceremony-shift-y));
+}
+
+.page--ceremony .event-title,
+.page--ceremony .ceremony-title,
+.page--ceremony h1,
+.page--ceremony h2 {
+  line-height: 0.94;
+  transform: scaleY(var(--ceremony-title-scale-y));
+  transform-origin: center top;
+  margin-bottom: clamp(8px, 2vh, 16px);
+}
+
+.page--ceremony .event-details,
+.page--ceremony .ceremony-details,
+.page--ceremony .venue-block,
+.page--ceremony .time-block,
+.page--ceremony .detail-grid,
+.page--ceremony .ceremony-timeline {
+  gap: calc(1rem * var(--ceremony-gap-scale));
+}
+
+.page--ceremony .floral-divider--bottom,
+.page--ceremony .bottom-floral-divider,
+.page--ceremony .lower-floral-divider,
+.page--ceremony .event-text-ornament-bottom {
+  transform: translateY(-16px);
+}
+
+/* ================================================== */
+/* EXPORT CSS                                         */
+/* ================================================== */
+html.exporting-pdf *,
+html.exporting-pdf *::before,
+html.exporting-pdf *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+html.exporting-pdf {
+  background: transparent !important;
+}
+
+html.exporting-pdf body {
+  background: transparent !important;
+  overflow-x: hidden !important;
+}
+
+html.exporting-pdf .pdf-export-button {
+  display: none !important;
+}
+
+html.exporting-pdf [data-pdf-page] {
+  width: 100vw !important;
+  min-height: 100svh !important;
+  overflow: hidden !important;
+}
