@@ -1014,7 +1014,7 @@ h3.font-light {
 .cover-title {
   display: grid;
   gap: 4px;
-  font-size: clamp(3.4rem, 15vw, 8.4rem);
+  font-size: clamp(3.75rem, 16vw, 8.9rem);
   font-weight: 600;
   line-height: 0.94;
   color: #754a38;
@@ -1029,7 +1029,7 @@ h3.font-light {
 
 .cover-title em {
   display: block;
-  font-size: clamp(1.18rem, 4.6vw, 1.7rem);
+  font-size: clamp(1.32rem, 5vw, 1.95rem);
   font-weight: 500;
   line-height: 1;
   color: #ad7b3f;
@@ -1040,7 +1040,7 @@ h3.font-light {
 .cover-date,
 .cover-footer-note {
   color: var(--page-muted);
-  font-size: clamp(1rem, 3vw, 1.14rem);
+  font-size: clamp(1.08rem, 3.3vw, 1.24rem);
   line-height: 1.6;
   font-weight: 500;
 }
@@ -1054,7 +1054,7 @@ h3.font-light {
   z-index: 2;
   left: 32px;
   right: 32px;
-  bottom: max(62px, calc(env(safe-area-inset-bottom) + 14px));
+  bottom: max(74px, calc(env(safe-area-inset-bottom) + 24px));
   display: flex;
   justify-content: space-between;
   gap: 18px;
@@ -1954,7 +1954,7 @@ h3.font-light {
   }
 
   .cover-title {
-    font-size: clamp(5.8rem, 11vw, 7.2rem);
+    font-size: clamp(6.2rem, 11.8vw, 7.8rem);
   }
 
   .cover-arch.arch-left {
@@ -1980,12 +1980,12 @@ h3.font-light {
   }
 
   .cover-title em {
-    font-size: 1.6rem;
+    font-size: 1.82rem;
   }
 
   .cover-date,
   .cover-footer-note {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 
   .page-grid,
@@ -2272,7 +2272,7 @@ h3.font-light {
   }
 
   .cover-copy {
-    width: min(100%, 380px);
+    width: min(100%, 396px);
     margin-top: 1.75rem;
     margin-inline: auto;
   }
@@ -2287,28 +2287,28 @@ h3.font-light {
 
   .cover-title {
     gap: 1px;
-    font-size: clamp(3.45rem, 16.4vw, 4.2rem);
+    font-size: clamp(3.78rem, 18vw, 4.58rem);
     line-height: 0.94;
   }
 
   .cover-title em {
     margin: 10px 0 8px;
-    font-size: 1.24rem;
+    font-size: 1.42rem;
   }
 
   .cover-date {
     margin-top: 18px;
-    font-size: 0.9rem;
+    font-size: 1.03rem;
   }
 
   .cover-footer-note {
     left: 34px;
     right: 34px;
-    bottom: max(60px, calc(env(safe-area-inset-bottom) + 16px));
+    bottom: max(74px, calc(env(safe-area-inset-bottom) + 26px));
     display: grid;
     justify-content: center;
     gap: 0;
-    font-size: 0.9rem;
+    font-size: 1rem;
     line-height: 1.42;
   }
 
@@ -2969,7 +2969,7 @@ h3.font-light {
   }
 
   .cover-title {
-    font-size: 3.76rem;
+    font-size: 4.05rem;
   }
 
   .monogram-seal.is-large {
@@ -2985,7 +2985,7 @@ h3.font-light {
   .cover-footer-note {
     left: 30px;
     right: 30px;
-    font-size: 0.86rem;
+    font-size: 0.94rem;
   }
 
   .event-folio {
