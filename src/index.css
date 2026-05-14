@@ -2610,6 +2610,71 @@ h3.font-light {
     display: none;
   }
 
+  .invitation-experience.is-android .wash-layer,
+  .invitation-experience.is-android .event-page .event-folio::after {
+    display: none !important;
+  }
+
+  .invitation-experience.is-android .family-invitation,
+  .invitation-experience.is-android .blessing-panel,
+  .invitation-experience.is-android .event-folio,
+  .invitation-experience.is-android .closing-frame,
+  .invitation-experience.is-android .cover-title,
+  .invitation-experience.is-android .event-folio h2,
+  .invitation-experience.is-android .detail-item strong,
+  .invitation-experience.is-android .ceremony-timeline strong,
+  .invitation-experience.is-android .venue-note strong,
+  .invitation-experience.is-android .event-note,
+  .invitation-experience.is-android .closing-frame h2,
+  .invitation-experience.is-android .closing-shlok,
+  .invitation-experience.is-android .closing-love {
+    text-shadow: none !important;
+  }
+
+  .invitation-experience.is-android .family-invitation,
+  .invitation-experience.is-android .blessing-panel,
+  .invitation-experience.is-android .event-folio,
+  .invitation-experience.is-android .closing-frame,
+  .invitation-experience.is-android .glass {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    filter: none !important;
+  }
+
+  .invitation-experience.is-android .monogram-glow,
+  .invitation-experience.is-android .mughal-arch,
+  .invitation-experience.is-android .ceremony-vector,
+  .invitation-experience.is-android .event-art .ceremony-vector,
+  .invitation-experience.is-android .wash-layer {
+    filter: none !important;
+  }
+
+  .invitation-experience.is-android .star,
+  .invitation-experience.is-android .monogram-seal img {
+    box-shadow: none !important;
+  }
+
+  .invitation-experience.is-android .ornate-arch {
+    background-image: var(--ornate-arch-image);
+    background-position: top center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .invitation-experience.is-android .event-text-ornament {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .invitation-experience.is-android .event-text-ornament-top {
+    background-image: var(--text-floral-sprig-image);
+  }
+
+  .invitation-experience.is-android .event-text-ornament-bottom {
+    background-image: var(--text-leaf-vine-image);
+  }
+
   .event-folio > * {
     position: relative;
     z-index: 1;
