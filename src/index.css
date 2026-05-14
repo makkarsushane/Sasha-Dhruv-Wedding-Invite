@@ -525,10 +525,14 @@ h3.font-light {
   left: 50%;
   width: min(900px, 66vw);
   aspect-ratio: 954 / 1648;
-  background-image: var(--ornate-arch-image);
-  background-position: top center;
+  background-image:
+    var(--ornate-arch-image),
+    radial-gradient(ellipse 43% 35% at 50% 22%, color-mix(in srgb, var(--page-paper), transparent 28%) 0 28%, transparent 68%),
+    radial-gradient(ellipse 58% 48% at 50% 37%, color-mix(in srgb, var(--page-deep), transparent 88%) 0 24%, color-mix(in srgb, var(--page-deep), transparent 96%) 48%, transparent 74%),
+    linear-gradient(90deg, transparent 14%, color-mix(in srgb, var(--page-accent), transparent 84%) 32%, transparent 50%, color-mix(in srgb, var(--page-deep), transparent 90%) 68%, transparent 86%);
+  background-position: top center, 50% 6%, 50% 20%, 50% 10%;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: contain, 84% 26%, 82% 48%, 78% 78%;
   opacity: 0.44;
   transform: translate3d(-50%, 0, 0);
   transform-origin: top center;
@@ -967,12 +971,7 @@ h3.font-light {
   z-index: 2;
   display: grid;
   justify-items: center;
-  margin-top: 2.5rem;
-}
-
-.invitation-kicker {
-  margin-bottom: 14px;
-  color: var(--page-muted);
+  margin-top: 2rem;
 }
 
 .cover-title {
@@ -2234,10 +2233,10 @@ h3.font-light {
 
   .cover-copy {
     width: min(100%, 380px);
+    margin-top: 1.75rem;
     margin-inline: auto;
   }
 
-  .invitation-kicker,
   .page-number,
   .detail-item span,
   .ceremony-timeline span,

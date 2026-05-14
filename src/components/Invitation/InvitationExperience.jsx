@@ -351,9 +351,6 @@ function CoverPage() {
       </motion.div>
 
       <motion.div className="cover-copy">
-        <p className="invitation-kicker" data-reveal>
-          A handcrafted wedding invitation
-        </p>
         <h1 className="cover-title" data-reveal>
           <span>{couple.bride}</span>
           <em>weds</em>
