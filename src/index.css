@@ -1040,7 +1040,7 @@ h3.font-light {
 .cover-date,
 .cover-footer-note {
   color: var(--page-muted);
-  font-size: clamp(0.92rem, 2.8vw, 1.02rem);
+  font-size: clamp(1rem, 3vw, 1.14rem);
   line-height: 1.6;
   font-weight: 500;
 }
@@ -1054,7 +1054,7 @@ h3.font-light {
   z-index: 2;
   left: 32px;
   right: 32px;
-  bottom: max(48px, env(safe-area-inset-bottom));
+  bottom: max(62px, calc(env(safe-area-inset-bottom) + 14px));
   display: flex;
   justify-content: space-between;
   gap: 18px;
@@ -1985,7 +1985,7 @@ h3.font-light {
 
   .cover-date,
   .cover-footer-note {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   .page-grid,
@@ -2304,12 +2304,12 @@ h3.font-light {
   .cover-footer-note {
     left: 34px;
     right: 34px;
-    bottom: max(44px, env(safe-area-inset-bottom));
+    bottom: max(60px, calc(env(safe-area-inset-bottom) + 16px));
     display: grid;
     justify-content: center;
     gap: 0;
-    font-size: 0.78rem;
-    line-height: 1.35;
+    font-size: 0.9rem;
+    line-height: 1.42;
   }
 
   .page-grid,
@@ -2985,7 +2985,7 @@ h3.font-light {
   .cover-footer-note {
     left: 30px;
     right: 30px;
-    font-size: 0.74rem;
+    font-size: 0.86rem;
   }
 
   .event-folio {
