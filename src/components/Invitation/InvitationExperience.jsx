@@ -381,7 +381,7 @@ function FamilyPage() {
       <MughalArch className="family-arch" />
 
       <div className="family-invitation" data-paper>
-        <div data-reveal>
+        <div className="family-monogram-slot" data-reveal aria-hidden="true">
           <MonogramSeal quiet />
         </div>
         <p className="family-sanskrit" data-reveal>

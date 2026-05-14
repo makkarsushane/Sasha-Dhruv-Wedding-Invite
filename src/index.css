@@ -932,6 +932,10 @@ h3.font-light {
   box-shadow: 0 18px 70px rgba(65, 42, 26, 0.18);
 }
 
+.family-monogram-slot .monogram-seal {
+  visibility: hidden;
+}
+
 .seal-ring {
   position: absolute;
   border: 1px solid currentColor;
