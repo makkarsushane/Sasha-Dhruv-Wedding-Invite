@@ -12,7 +12,7 @@ import {
 } from '../../data/weddingData';
 import { useSmoothScroll } from '../../hooks/useSmoothScroll';
 import { assetPath } from '../../lib/assetPath';
-import { isTouchScrollDevice } from '../../lib/mobileMotion';
+import { isAndroidDevice, isTouchScrollDevice } from '../../lib/mobileMotion';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 ScrollTrigger.config({
@@ -554,6 +554,7 @@ function ClosingPage() {
 export default function InvitationExperience() {
   const root = useRef(null);
   const reducedMotion = useReducedMotion();
+  const isAndroid = isAndroidDevice();
   useSmoothScroll();
 
   useGSAP(
@@ -718,7 +719,7 @@ export default function InvitationExperience() {
   );
 
   return (
-    <main ref={root} className="invitation-experience">
+    <main ref={root} className={`invitation-experience ${isAndroid ? 'is-android' : ''}`}>
       <CoverPage />
       <FamilyPage />
       {invitationChapters.map((chapter, index) => (

@@ -2352,6 +2352,10 @@ h3.font-light {
       radial-gradient(ellipse 82% 70% at 50% 42%, color-mix(in srgb, var(--page-wash), transparent 56%) 0 34%, transparent 70%);
   }
 
+  .invitation-experience.is-android .invitation-page:not(.cover-page) [data-paper] {
+    background: transparent;
+  }
+
   .family-invitation .monogram-seal {
     width: 64px;
   }
@@ -2566,6 +2570,10 @@ h3.font-light {
     opacity: 0.7;
     pointer-events: none;
     transform: translate(-50%, -50%);
+  }
+
+  .invitation-experience.is-android .event-page .event-folio::after {
+    display: none;
   }
 
   .event-folio > * {
