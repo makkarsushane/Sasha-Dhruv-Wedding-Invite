@@ -527,12 +527,11 @@ h3.font-light {
   aspect-ratio: 954 / 1648;
   background-image:
     var(--ornate-arch-image),
-    radial-gradient(ellipse 58% 46% at 50% 34%, color-mix(in srgb, var(--page-deep), transparent 84%) 0 20%, color-mix(in srgb, var(--page-deep), transparent 93%) 48%, transparent 74%),
-    linear-gradient(90deg, transparent 13%, color-mix(in srgb, var(--page-deep), transparent 88%) 30%, transparent 50%, color-mix(in srgb, var(--page-deep), transparent 86%) 70%, transparent 87%),
-    radial-gradient(ellipse 72% 30% at 50% 47%, color-mix(in srgb, var(--page-deep), transparent 91%) 0 38%, transparent 72%);
-  background-position: top center, 50% 21%, 50% 10%, 50% 42%;
+    radial-gradient(ellipse 46% 20% at 50% 16%, color-mix(in srgb, var(--page-deep), transparent 88%) 0 30%, transparent 72%),
+    radial-gradient(ellipse 42% 22% at 50% 31%, color-mix(in srgb, var(--page-deep), transparent 93%) 0 28%, transparent 70%);
+  background-position: top center, 50% 11%, 50% 26%;
   background-repeat: no-repeat;
-  background-size: contain, 84% 48%, 78% 78%, 82% 34%;
+  background-size: contain, 62% 20%, 64% 26%;
   opacity: 0.44;
   transform: translate3d(-50%, 0, 0);
   transform-origin: top center;
