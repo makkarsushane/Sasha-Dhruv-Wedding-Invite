@@ -339,7 +339,6 @@ function CoverPage() {
       className="invitation-page cover-page"
       style={pageStyle(coverPalette)}
       aria-label="Cover"
-      data-pdf-page
     >
       <Atmosphere motif="mandap" />
       <InvitationFrame variant="cover" />
@@ -376,7 +375,6 @@ function FamilyPage() {
       className="invitation-page family-page"
       style={pageStyle(familyPalette)}
       aria-label="Family and blessings"
-      data-pdf-page
     >
       <Atmosphere motif="mehendi" quiet />
       <InvitationFrame variant="family" />
@@ -445,10 +443,9 @@ function EventPage({ chapter, index }) {
 
   return (
     <section
-      className={`invitation-page event-page event-${chapter.id} ${index % 2 ? 'is-reversed' : ''} ${isWeddingDay ? 'wedding-day-page page--ceremony' : ''}`}
+      className={`invitation-page event-page event-${chapter.id} ${index % 2 ? 'is-reversed' : ''}`}
       style={pageStyle(chapter.palette)}
       aria-label={chapter.title}
-      data-pdf-page
     >
       <Atmosphere motif={chapter.motif} />
       {chapter.motif === 'night' && <StarField />}
@@ -526,7 +523,6 @@ function ClosingPage() {
       className="invitation-page closing-page"
       style={pageStyle(closingPalette)}
       aria-label="RSVP and closing"
-      data-pdf-page
     >
       <Atmosphere motif="wine" />
       <InvitationFrame variant="closing" />
