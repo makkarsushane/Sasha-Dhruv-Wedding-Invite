@@ -13,7 +13,6 @@ import {
 import { useSmoothScroll } from '../../hooks/useSmoothScroll';
 import { assetPath } from '../../lib/assetPath';
 import { isTouchScrollDevice } from '../../lib/mobileMotion';
-import PdfExportButton from '../PdfExportButton/PdfExportButton';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 ScrollTrigger.config({
@@ -730,7 +729,6 @@ export default function InvitationExperience() {
         <EventPage key={chapter.id} chapter={chapter} index={index} />
       ))}
       <ClosingPage />
-      <PdfExportButton />
     </main>
   );
 }
