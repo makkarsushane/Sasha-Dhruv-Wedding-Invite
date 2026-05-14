@@ -1040,7 +1040,7 @@ h3.font-light {
 .cover-date,
 .cover-footer-note {
   color: var(--page-muted);
-  font-size: clamp(1.08rem, 3.3vw, 1.24rem);
+  font-size: clamp(1.2rem, 3.8vw, 1.45rem);
   line-height: 1.6;
   font-weight: 500;
 }
@@ -2298,7 +2298,7 @@ h3.font-light {
 
   .cover-date {
     margin-top: 18px;
-    font-size: 1.03rem;
+    font-size: 1.15rem;
   }
 
   .cover-footer-note {
