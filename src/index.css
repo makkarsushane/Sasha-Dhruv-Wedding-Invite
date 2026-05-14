@@ -2570,24 +2570,30 @@ h3.font-light {
     display: block;
     justify-self: center;
     width: min(242px, 67vw);
-    opacity: 0.38;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
+    opacity: 0.42;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: center, center 56%, center 63%;
+    background-size: contain, 62% 26%, 82% 38%;
     pointer-events: none;
   }
 
   .event-text-ornament-top {
     height: clamp(48px, 7.2svh, 66px);
     margin-bottom: clamp(9px, 1.5svh, 14px);
-    background-image: var(--text-floral-sprig-image);
+    background-image:
+      var(--text-floral-sprig-image),
+      radial-gradient(ellipse 48% 22% at 50% 50%, color-mix(in srgb, var(--page-deep), transparent 84%) 0 28%, transparent 74%),
+      radial-gradient(ellipse 72% 28% at 50% 50%, color-mix(in srgb, var(--page-deep), transparent 91%) 0 34%, transparent 78%);
     transform: rotate(180deg) scaleX(-1);
   }
 
   .event-text-ornament-bottom {
     height: clamp(34px, 5.3svh, 46px);
     margin-top: clamp(11px, 1.8svh, 16px);
-    background-image: var(--text-leaf-vine-image);
+    background-image:
+      var(--text-leaf-vine-image),
+      radial-gradient(ellipse 46% 20% at 50% 50%, color-mix(in srgb, var(--page-deep), transparent 85%) 0 28%, transparent 74%),
+      radial-gradient(ellipse 76% 32% at 50% 50%, color-mix(in srgb, var(--page-deep), transparent 92%) 0 34%, transparent 80%);
     transform: scaleX(-1);
   }
 
