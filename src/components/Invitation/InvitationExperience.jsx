@@ -357,7 +357,7 @@ function CoverPage() {
           <span>{couple.groom}</span>
         </h1>
         <p className="cover-date" data-reveal>
-          28 - 29 June 2026 | New Delhi
+          29 June 2026 | New Delhi
         </p>
       </motion.div>
 

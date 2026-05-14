@@ -112,7 +112,7 @@ export const events = [
   },
 ];
 
-export const invitationChapters = [
+const allInvitationChapters = [
   {
     id: 'haldi-mehndi',
     sequence: '01',
@@ -214,6 +214,10 @@ export const invitationChapters = [
     },
   },
 ];
+
+export const invitationChapters = allInvitationChapters.filter(
+  (chapter) => chapter.id === 'wedding-day',
+);
 
 export const blessings = {
   sanskrit: 'विघ्न हरण मंगल करण, गौरी पुत्र गणेश। प्रथम निमंत्रण आपको, ब्रह्मा विष्णु महेश॥',
